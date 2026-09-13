@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>한지민 개념 확인 — 비교급 + 단어 Day 32 + 구문독해</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif; background: #eef3f2; color: #2B3A3D; min-height: 100vh; display: flex; justify-content: center; padding: 18px 12px 60px; word-break: keep-all; overflow-wrap: break-word; }
+  .wrap { width: 100%; max-width: 560px; }
+  .card { background: #fff; border-radius: 16px; padding: 24px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); margin-bottom: 14px; }
+  h1 { font-size: 1.26rem; color: #235E64; margin-bottom: 6px; line-height:1.45; }
+  .sub { font-size: 0.88rem; color: #6B7B7E; margin-bottom: 14px; line-height: 1.7; }
+  .meta { display:inline-block; font-size:0.8rem; color:#235E64; background:#E6F1F1; border-radius:6px; padding:3px 9px; margin-bottom:16px; font-weight:bold; }
+  .brand { display:flex; align-items:center; justify-content:center; gap:7px; font-size: 0.84rem; color: #235E64; font-weight:bold; margin-top: 16px; }
+  .brand .mk { display:inline-flex; align-items:center; justify-content:center; width:23px; height:23px; border-radius:7px; background:#2F7C83; color:#fff; font-size:0.82rem; font-weight:bold; }
+  .brand-top { display:flex; align-items:center; gap:8px; font-size:0.86rem; color:#235E64; font-weight:bold; margin-bottom:14px; }
+  .brand-top .mk { display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:8px; background:#2F7C83; color:#fff; font-size:0.9rem; font-weight:bold; }
+  .lbl { display:block; font-size:0.9rem; font-weight:bold; color:#235E64; margin: 4px 0 7px; }
+  input[type=text] { width: 100%; padding: 13px; font-size: 1.05rem; border: 1.5px solid #DBE4E5; border-radius: 10px; font-family: inherit; margin-bottom: 14px; }
+  input[type=text]:focus { outline: none; border-color: #2F7C83; }
+  .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:8px; margin-bottom: 10px; }
+  .sec-btn { text-align:center; padding: 11px 5px 10px; background:#f5f9f8; border:1.5px solid #DBE4E5; border-radius:12px; cursor:pointer; font-family:inherit; color:#2B3A3D; line-height:1.4; }
+  .sec-btn .n { display:block; font-weight:bold; color:#235E64; font-size:0.98rem; }
+  .sec-btn .s { display:block; font-size:0.8rem; color:#2B3A3D; margin-top:2px; }
+  .sec-btn .c { display:block; font-size:0.74rem; color:#6B7B7E; margin-top:2px; }
+  .sec-btn .bd { display:inline-block; font-size:0.72rem; border-radius:6px; padding:1px 6px; margin-top:5px; font-weight:bold; }
+  .bd.ing { background:#FFF1DC; color:#b86b00; }
+  .bd.ok { background:#E6F1F1; color:#235E64; }
+  .sec-btn.sel { border-color:#2F7C83; background:#E6F1F1; box-shadow: 0 0 0 1px #2F7C83 inset; }
+  .sec-desc { background:#f6f9f8; border:1px solid #DBE4E5; border-radius:10px; padding:11px 13px; font-size:0.87rem; line-height:1.7; color:#2B3A3D; min-height: 44px; }
+  .sec-desc b { color:#235E64; }
+  .btn { display: block; width: 100%; margin-top: 12px; padding: 14px; font-size: 1.03rem; font-weight: bold; color: #fff; background: #2F7C83; border: none; border-radius: 10px; cursor: pointer; font-family: inherit; }
+  .btn:disabled { background: #bcc8c6; cursor: default; }
+  .btn.ghost { background: #fff; color: #235E64; border: 1.5px solid #b9d3cd; }
+  .btn.small { padding: 10px; font-size: 0.9rem; margin-top: 8px; }
+  .dots { list-style:none; margin-top:14px; font-size:0.83rem; color:#6B7B7E; line-height:1.75; }
+  .dots li:before { content:"· "; color:#2F7C83; font-weight:bold; }
+  .progress { font-size: 0.83rem; color: #6B7B7E; margin-bottom: 10px; display:flex; justify-content:space-between; gap:10px; }
+  .bar { height: 5px; background:#e2eae8; border-radius:3px; margin-bottom:14px; overflow:hidden; }
+  .bar > i { display:block; height:100%; background:#2F7C83; width:0; transition: width .25s; }
+  .qtext { font-size: 1.06rem; line-height: 1.75; margin-bottom: 14px; font-weight: bold; }
+  .qtext .kr { display:block; font-weight:normal; font-size:0.93rem; color:#6B7B7E; margin-top:4px; }
+  .choice { display: block; width: 100%; text-align: left; padding: 13px 14px; margin-bottom: 9px; font-size: 1rem; line-height:1.55; background: #f6f9f8; border: 1.5px solid #DBE4E5; border-radius: 10px; cursor: pointer; font-family: inherit; color:#2B3A3D; }
+  .choice:active, .choice.picked { background: #E6F1F1; border-color:#2F7C83; }
+  .num { color: #235E64; font-weight: bold; margin-right: 6px; }
+  .concept { border-left: 5px solid #2F7C83; background:#f2faf7; border-radius: 10px; padding: 16px 16px; line-height:1.8; font-size:0.97rem; }
+  .concept h3 { color:#235E64; font-size:1.05rem; margin-bottom:8px; line-height:1.5; }
+  .concept .ex { background:#fff; border:1px dashed #b9dfd4; border-radius:8px; padding:10px 12px; margin-top:9px; font-size:0.94rem; }
+  .concept .fix { background:#FFF6E8; border:1px solid #f0dfb0; border-radius:8px; padding:10px 12px; margin-top:9px; font-size:0.94rem; }
+  .concept .warn { background:#fdf6f5; border:1px solid #eec8c2; border-radius:8px; padding:10px 12px; margin-top:9px; font-size:0.94rem; }
+  .concept .tip { background:#f4f7fd; border:1px solid #c9d8ef; border-radius:8px; padding:10px 12px; margin-top:9px; font-size:0.94rem; }
+  .concept b { color:#235E64; }
+  .concept .warn b { color:#c0392b; }
+  .concept table { width:100%; border-collapse:collapse; margin-top:8px; font-size:0.9rem; background:#fff; }
+  .concept th, .concept td { border:1px solid #DBE4E5; padding:6px 7px; text-align:left; vertical-align:top; }
+  .concept th { background:#E6F1F1; color:#235E64; }
+  .score-big { font-size: 2.1rem; font-weight: bold; color: #235E64; text-align: center; margin: 8px 0 2px; }
+  .exp { background: #f6f9f8; border-left: 4px solid #2F7C83; border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; font-size: 0.93rem; line-height: 1.75; }
+  .exp.wrong { border-left-color: #c0392b; background:#fdf5f4; }
+  .exp b { color: #235E64; }
+  .exp .hd { font-weight:bold; display:block; margin-bottom:5px; color:#235E64; }
+  .exp.wrong .hd { color: #c0392b; }
+  .exp .qq { display:block; font-size:0.86rem; color:#6B7B7E; margin-bottom:6px; }
+  .hint { font-size:0.86rem; color:#6B7B7E; margin-bottom:10px; background:#f6f9f8; border-radius:8px; padding:8px 11px; line-height:1.6; }
+  .hidden { display: none !important; }
+  .kbox { background:#FFF6E8; border:1.5px solid #f0dfb0; border-radius:10px; padding:13px 14px; font-size:0.92rem; line-height:1.7; margin-top:12px; }
+  .total-box { background:#E6F1F1; border:1.5px solid #a9d3c9; border-radius:12px; padding:13px 14px; margin-top:14px; font-size:0.9rem; line-height:1.7; }
+  .total-box b { color:#235E64; }
+  .ord-slot { min-height: 58px; background:#f2faf7; border:2px dashed #a9d3c9; border-radius:10px; padding:9px 10px; margin-bottom:12px; display:flex; flex-wrap:wrap; gap:7px; align-items:flex-start; }
+  .ord-slot .ph { color:#9aa8a6; font-size:0.88rem; padding:7px 3px; }
+  .ord-pool { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+  .tile { padding:10px 14px; font-size:1rem; background:#fff; border:1.5px solid #b9d3cd; border-radius:9px; cursor:pointer; font-family:inherit; color:#2B3A3D; }
+  .tile.placed { background:#2F7C83; color:#fff; border-color:#2F7C83; }
+  .ord-btns { display:flex; gap:9px; }
+  .ord-btns .btn { margin-top:0; }
+  @media (max-width: 380px) { .sec-btn .s { font-size:0.74rem; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 첫 화면: 이름 + 영역 선택 + 시작 -->
+  <div class="card" id="start-card">
+    <p class="brand-top"><span class="mk">영</span> 영핏 지나티처</p>
+    <h1>개념 확인 클리닉 📗<br>비교급 + 단어 Day 32 + 구문독해</h1>
+    <p class="sub">9월 11일 수업, 정말 잘 해냈어요! 👏<br>단어·독해·개념 정리를 거의 다 맞혔어요.<br>그래서 오늘은 틀린 것만 모으는 대신<br><b>개념이 정말 단단한지 확인</b>하는 시간이에요.<br>영역마다 <b>개념 카드</b>를 먼저 읽고 문제를 풀어요.</p>
+    <span class="meta">전체 20문항 · 3개 영역</span>
+    <label class="lbl" for="name-input">이름</label>
+    <input type="text" id="name-input" placeholder="이름을 입력하세요" maxlength="20" autocomplete="off">
+    <span class="lbl">영역 선택</span>
+    <div class="grid" id="sec-grid"></div>
+    <div class="sec-desc" id="sec-desc">풀고 싶은 영역을 골라 주세요. 어느 영역부터 풀어도 괜찮아요 🙂</div>
+    <button class="btn" id="start-btn" disabled>이름과 영역을 먼저 골라 주세요</button>
+    <button class="btn ghost small hidden" id="restart-sec-btn">이 영역 처음부터 다시 풀기</button>
+    <div class="total-box hidden" id="total-box">
+      🎉 <b>세 영역을 모두 끝냈어요!</b><br><span id="total-line"></span>
+      <button class="btn" id="total-copy-btn">전체 결과 한 번에 복사</button>
+    </div>
+    <ul class="dots">
+      <li>이름을 입력하고 영역을 고른 뒤 시작 버튼을 눌러요.</li>
+      <li>영역마다 <b>개념 카드</b>를 먼저 보고, 이어서 문제를 풀어요.</li>
+      <li>객관식은 누르면 바로 다음 문제로 넘어가요. (숫자키 1~4도 돼요)</li>
+      <li>낱말 배열은 낱말을 순서대로 누른 뒤 <b>[확인]</b>을 눌러요.</li>
+      <li>중간에 닫아도 이어서 풀 수 있어요.</li>
+      <li>영역을 끝내면 <b>[결과 복사]</b> 후 지나티처에게 카톡으로 보내 주세요.</li>
+    </ul>
+    <button class="btn ghost small" id="reset-all-btn">전부 지우고 처음부터 다시</button>
+    <p class="brand"><span class="mk">영</span> 영핏 지나티처</p>
+  </div>
+
+  <!-- 개념 카드 / 문제 -->
+  <div class="card hidden" id="quiz-card">
+    <p class="brand-top"><span class="mk">영</span> 영핏 지나티처</p>
+    <div class="progress"><span id="sec-name"></span><span id="progress"></span></div>
+    <div class="bar"><i id="bar-fill"></i></div>
+    <div id="body-area"></div>
+  </div>
+
+  <!-- 결과 -->
+  <div class="card hidden" id="result-card">
+    <p class="brand-top"><span class="mk">영</span> 영핏 지나티처</p>
+    <h1 id="result-title">수고했어요! 🎉</h1>
+    <div class="score-big" id="score-line"></div>
+    <p class="sub" style="text-align:center" id="score-sub"></p>
+    <div class="kbox">📮 아래 <b>[결과 복사]</b> 버튼을 누른 뒤, 카톡에 붙여넣어 지나티처에게 꼭 보내 주세요!</div>
+    <button class="btn" id="kakao-btn">결과 복사하기</button>
+    <button class="btn ghost" id="next-sec-btn">다음 영역 풀러 가기 →</button>
+    <button class="btn ghost" id="back-btn">← 영역 선택으로</button>
+    <div style="margin-top:22px">
+      <p class="sub" style="margin-bottom:10px">📝 전체 해설 — 맞은 문제도 한 번씩 읽어 보기!</p>
+      <div id="explanations"></div>
+    </div>
+    <p class="brand"><span class="mk">영</span> 영핏 지나티처</p>
+  </div>
+
+</div>
+<script>
+"use strict";
+var ENGFIT_SUBMIT_URL = "https://script.google.com/macros/s/AKfycbz5IC3cEtaBGW10qZhrjwtjdtGugmcmYb4ZTHS4k-1LOqTRYzW-LfoAPyFB_ShjAqNp/exec";
+async function engfitSubmit(r) {
+  var body = JSON.stringify(r);
+  try {
+    var res = await fetch(ENGFIT_SUBMIT_URL, { method: "POST", body: body });
+    var j = await res.json();
+    return j.ok === true;
+  } catch (e) {
+    try { await fetch(ENGFIT_SUBMIT_URL, { method: "POST", mode: "no-cors", body: body }); return true; }
+    catch (e2) { return false; }
+  }
+}
+var _sentKeys = {};
+function quietSubmit(r, key) {
+  var k = key || r.quizId;
+  if (_sentKeys[k]) return;
+  _sentKeys[k] = true;
+  try { engfitSubmit(r); } catch (e) {}
+}
+
+/* ══════ 문제 데이터 ══════ */
+var SECTIONS = [
+{
+  id: "s1",
+  short: "비교급+than",
+  title: "1영역 · 비교급 + than / 비교급 강조",
+  desc: "<b>Unit 110 비교급 + than · 비교급 강조</b><br>개념 카드 3장 → 문제 10개 (객관식 7 + 낱말 배열 3)<br>비교급은 <b>한 번만</b> 바꾸기, <b>than 뒤를 끝까지</b> 쓰기를 확인해요.",
+  quizId: "concept-hjm-0911-p1",
+  cards: [
+
+  "<h3>📘 개념 카드 ① — 비교급은 <u>딱 한 번만</u> 바꿔요</h3>‘~보다 더 …한’은 <b>비교급 + than</b>으로 써요. 비교급을 만드는 방법은 <b>두 가지 중 하나</b>예요.<table><tr><th>짧은 단어</th><th>긴 단어</th></tr><tr><td>뒤에 <b>-er</b><br>cheap<b>er</b><br>small<b>er</b><br>fast<b>er</b></td><td>앞에 <b>more</b><br>more comfortable<br>more delicious<br>more interesting</td></tr></table><p style='font-size:0.86rem;color:#6B7B7E;margin-top:6px'>※ 긴 단어 = -ful · -ous · -ing · -ive 로 끝나는 2음절 단어, 3음절 이상 단어</p><div class='warn'>❌ much <b>more cheaper</b> than<br>&nbsp;&nbsp;&nbsp;→ -er도 붙이고 more도 붙였어요.<br>❌ much <b>small</b> than<br>&nbsp;&nbsp;&nbsp;→ 아무것도 안 바꿨어요.<br>✅ much <b>cheaper</b> than<br>✅ much <b>smaller</b> than<br>👉 <b>-er 또는 more</b>, 둘 중 <b>하나만!</b></div><div class='fix'><b>철자 규칙도 한 번 더</b><br>· -e로 끝나면 <b>-r만</b>: nice → nice<b>r</b>, wise → wise<b>r</b><br>· 단모음 + 단자음이면 <b>자음 한 번 더</b>: big → bi<b>gg</b>er, hot → ho<b>tt</b>er<br>· 자음 + y면 <b>y → i</b>: early → earl<b>ier</b>, easy → eas<b>ier</b>, happy → happ<b>ier</b></div><div class='tip'>💡 모양이 확 바뀌는 <b>불규칙</b><br>good / well → <b>better</b> · bad / ill → <b>worse</b><br>many / much → <b>more</b> · little → <b>less</b><br>지민이는 개념 요약에서 이걸 전부 맞혔어요 👏</div>",
+
+  "<h3>📗 개념 카드 ② — <u>than 뒤를 끝까지</u> 써요</h3>비교는 항상 <b>두 가지를 나란히 놓는 것</b>이에요. 그래서 than 뒤에 <b>무엇과 비교하는지</b>가 꼭 나와야 해요.<div class='warn'>켈리의 옷차림은 <b>비비안의 것보다</b> 훨씬 편해 보인다.<br>❌ Kelly's outfit looks much more comfortable. (비교 대상이 사라짐)<br>✅ Kelly's outfit looks much more comfortable <b>than Vivian's</b>.</div><div class='fix'><b>‘~의 것’은 이렇게 써요</b><br>· 이름·사람: <b>Vivian's</b> (비비안의 것), <b>our neighbor's</b> (우리 이웃의 것)<br>· 대명사: <b>mine</b> (나의 것) · <b>ours</b> (우리의 것) · <b>yours</b> · <b>his</b> · <b>hers</b><br>👉 집과 집을 비교할 땐 than our <b>neighbor's</b> (이웃의 집)! than our neighbor (이웃 사람)이라고 하면 ‘집 vs 사람’을 비교하는 이상한 문장이 돼요.</div><div class='ex'><b>than 뒤에 주어 + 동사가 오기도 해요</b><br>She speaks English better <b>than I do</b>. (내가 하는 것보다)<br>I can finish it faster <b>than he can</b>. (그가 할 수 있는 것보다)<br>These clothes are cheaper <b>than I expected</b>. (내가 <b>기대했던</b> 것보다)<br>👉 우리말이 <b>‘~했던’</b>이면 과거형 <b>expected</b>로 맞춰요.</div><div class='tip'>💡 than 뒤에 짧게 붙는 표현<br>than <b>usual</b> (평소보다) · than <b>before</b> (전보다) · than <b>the last one</b> (지난번 것보다)</div>",
+
+  "<h3>📙 개념 카드 ③ — ‘훨씬’은 much · even · still · far · a lot</h3>비교급 <b>바로 앞</b>에 넣으면 ‘<b>훨씬</b> 더’라는 뜻이 돼요.<div class='ex'>This train is <b>much</b> faster than the bus. (훨씬 더 빠르다)<br>His bag is <b>a lot</b> more expensive than mine. (훨씬 더 비싸다)<br>Homemade food is <b>far</b> healthier than fast food.</div><div class='warn'>❌ <b>very</b> faster → very는 비교급을 꾸미지 못해요.<br>✅ <b>very</b> fast (원급) / <b>much</b> faster (비교급)</div><div class='fix'><b>영작할 때 마지막 점검 3가지</b><br>① <b>이</b> 옷들 = <b>These</b> clothes / <b>저·그</b> 옷들 = <b>Those</b> clothes<br>② 우리 = <b>our</b> (a-r 아니고 <b>o-u-r</b>)<br>③ 집에서 만든 = <b>homemade</b> (home + made)</div><div class='tip'>💡 문장을 다 쓰고 나면 우리말을 한 번 더 읽으면서<br><b>‘이/저’, ‘~했던’, ‘~보다’</b>가 영어에 다 들어갔는지 손가락으로 짚어 봐요 ☝️</div>"
+
+  ],
+  items: [
+
+  { t:"mc", q:"빈칸에 알맞은 것은?<br>This bag is ______ I expected.<span class='kr'>(이 가방은 내가 기대했던 것보다 훨씬 싸다.)</span>",
+    choices:["much cheaper than","much more cheaper than","much more cheap than","very cheaper than"], answer:"much cheaper than",
+    exp:"정답은 <b>much cheaper than</b>이에요.<br>cheap은 짧은 단어라서 <b>-er</b>만 붙이면 비교급이 돼요. (cheap → <b>cheaper</b>)<br>· <b>much more cheaper than</b>: -er을 붙였는데 more까지 붙였어요. 비교급을 <b>두 번</b> 만든 셈이라 틀려요.<br>· <b>much more cheap than</b>: cheap은 짧은 단어라 more를 쓰지 않아요.<br>· <b>very cheaper than</b>: very는 비교급을 꾸미지 못해요. ‘훨씬’은 <b>much / even / still / far / a lot</b>!<br>💡 지난 문제에서 much more cheaper가 나왔었죠? 이제 <b>-er 또는 more, 하나만</b> 기억해요 😊" },
+
+  { t:"mc", q:"빈칸에 알맞은 것은?<br>Korea is much ______ than Russia.<span class='kr'>(한국은 러시아보다 훨씬 작다.)</span>",
+    choices:["smaller","small","more small","smallest"], answer:"smaller",
+    exp:"정답은 <b>smaller</b>예요.<br>뒤에 <b>than</b>이 있으니까 앞에는 반드시 <b>비교급</b>이 와야 해요. small은 짧은 단어라 <b>-er</b>을 붙여요.<br>· <b>small</b>: 원래 모양 그대로라서 than과 함께 쓸 수 없어요. (much small than ✕)<br>· <b>more small</b>: 짧은 단어에는 more를 쓰지 않아요.<br>· <b>smallest</b>: ‘가장 작은’이라는 최상급이라 than과 어울리지 않아요.<br>💡 영작할 때 much를 쓰고 나면 <b>바로 뒤 단어에 -er이 붙었는지</b> 꼭 확인해요!" },
+
+  { t:"mc", q:"빈칸에 알맞은 것은?<br>My cold is ______ today than yesterday.<span class='kr'>(내 감기는 어제보다 오늘 더 나쁘다.)</span>",
+    choices:["worse","badder","more bad","worst"], answer:"worse",
+    exp:"정답은 <b>worse</b>예요.<br>bad(나쁜)는 <b>불규칙</b>으로 변해요. bad → <b>worse</b> → worst<br>· <b>badder</b>, <b>more bad</b>: 규칙대로 만든 것처럼 보이지만 영어에 없는 형태예요.<br>· <b>worst</b>: ‘가장 나쁜’이라는 최상급이라 than과 함께 쓰지 않아요.<br>💡 불규칙 4형제: good/well → <b>better</b>, bad/ill → <b>worse</b>, many/much → <b>more</b>, little → <b>less</b>" },
+
+  { t:"mc", q:"원급과 비교급이 <b>바르게 짝지어지지 않은</b> 것은?",
+    choices:["hot – hoter","big – bigger","easy – easier","nice – nicer"], answer:"hot – hoter",
+    exp:"바르지 않은 것은 <b>hot – hoter</b>예요.<br>hot은 <b>단모음(o) + 단자음(t)</b>으로 끝나서 <b>자음을 한 번 더</b> 쓰고 -er을 붙여요. → ho<b>tt</b>er<br>나머지는 모두 맞아요 👏<br>· <b>big – bigger</b>: big도 단모음 + 단자음이라 g를 한 번 더!<br>· <b>easy – easier</b>: 자음 + y로 끝나서 y를 i로 바꾸고 -er<br>· <b>nice – nicer</b>: -e로 끝나서 -r만 붙여요." },
+
+  { t:"ord", q:"우리말에 맞게 문장을 만드세요.<br>👉 <b>켈리의 가방은 비비안의 것보다 훨씬 무겁다.</b>",
+    tiles:["Kelly's","bag","is","much","heavier","than","Vivian's."],
+    answer:"Kelly's bag is much heavier than Vivian's.",
+    exp:"Kelly's bag is much <b>heavier than Vivian's</b>.<br>① heavy는 <b>자음 + y</b>로 끝나서 y → i 바꾸고 -er → <b>heavier</b><br>② ‘훨씬’은 비교급 바로 앞에 <b>much</b><br>③ ‘비비안의 것보다’ = <b>than Vivian's</b> — 여기서 Vivian's는 ‘비비안의 <b>가방</b>’이라는 뜻이에요.<br>💡 지난번 영작에서 than Vivian's를 빠뜨렸었죠? 오늘은 <b>than 뒤까지 끝까지</b> 완성했어요 😊" },
+
+  { t:"mc", q:"우리말을 영어로 <b>바르게</b> 옮긴 것은?<br>👉 <b>우리 집은 우리 이웃의 것보다 훨씬 작다.</b>",
+    choices:["Our house is much smaller than our neighbor's.","Our house is much smaller than our neighbor.","Our house is much smaller.","Our house is much more smaller than our neighbor's."],
+    answer:"Our house is much smaller than our neighbor's.",
+    exp:"정답은 <b>Our house is much smaller than our neighbor's.</b>예요.<br>‘우리 이웃의 <b>것</b>’ = 이웃의 <b>집</b>이니까 <b>neighbor's</b>처럼 <b>'s</b>를 붙여요.<br>· <b>than our neighbor.</b>: ‘우리 집이 이웃 <b>사람</b>보다 작다’는 뜻이 돼서 이상해요. 집은 집끼리 비교해야죠!<br>· <b>much smaller.</b>로 끝난 문장: ‘~보다’에 해당하는 <b>than 부분이 통째로 빠졌어요</b>.<br>· <b>much more smaller</b>: -er과 more를 함께 써서 비교급이 두 번이에요.<br>💡 ‘우리’는 <b>o-u-r</b>, our! 철자도 함께 챙겨요." },
+
+  { t:"mc", q:"우리말을 영어로 <b>바르게</b> 옮긴 것은?<br>👉 <b>이 신발들은 내가 생각했던 것보다 훨씬 편하다.</b>",
+    choices:["These shoes are much more comfortable than I thought.","Those shoes are much more comfortable than I thought.","These shoes are much more comfortable than I think.","These shoes are much comfortabler than I thought."],
+    answer:"These shoes are much more comfortable than I thought.",
+    exp:"정답은 <b>These shoes are much more comfortable than I thought.</b>예요.<br>이 문제는 <b>세 군데</b>를 꼼꼼히 봐야 해요.<br>① ‘<b>이</b> 신발들’ → <b>These</b> (가까이 있는 여러 개)<br>&nbsp;&nbsp;· Those로 시작하는 문장은 ‘<b>저</b> 신발들’이라 우리말과 달라요.<br>② ‘내가 생각<b>했던</b> 것보다’ → 과거형 <b>thought</b><br>&nbsp;&nbsp;· than I <b>think</b>는 ‘지금 생각하는 것보다’라서 시제가 맞지 않아요.<br>③ comfortable은 긴 단어라 <b>more comfortable</b><br>&nbsp;&nbsp;· comfortabler라는 형태는 없어요.<br>💡 지난 영작의 These / expected 실수를 똑같은 틀로 다시 확인한 문제예요 👍" },
+
+  { t:"ord", q:"우리말에 맞게 문장을 만드세요.<br>👉 <b>우리 할머니의 요리는 식당 음식보다 훨씬 더 맛있다.</b>",
+    tiles:["My","grandma's","cooking","is","much","more","delicious","than","restaurant","food."],
+    answer:"My grandma's cooking is much more delicious than restaurant food.",
+    exp:"My grandma's cooking is <b>much more delicious than</b> restaurant food.<br>① delicious는 <b>-ous</b>로 끝나는 긴 단어라 앞에 <b>more</b>를 붙여요. (deliciouser ✕)<br>② ‘훨씬’ much는 <b>more 앞</b>에 와요. → much more delicious<br>③ ‘우리 할머니의’ = <b>My grandma's</b><br>💡 much와 more가 나란히 오는 건 괜찮아요! more가 비교급을 만드는 역할, much가 ‘훨씬’ 역할이에요. 틀린 건 more + <b>-er</b>을 같이 쓸 때뿐이에요." },
+
+  { t:"mc", q:"빈칸에 들어갈 수 <b>없는</b> 것은?<br>This train is ______ faster than the bus.<span class='kr'>(이 기차는 그 버스보다 훨씬 더 빠르다.)</span>",
+    choices:["very","much","even","a lot"], answer:"very",
+    exp:"들어갈 수 없는 것은 <b>very</b>예요.<br>very는 <b>원급</b>(fast)만 꾸밀 수 있어요. 비교급 faster 앞에서는 쓸 수 없어요.<br>· <b>much</b> faster, <b>even</b> faster, <b>a lot</b> faster → 모두 ‘훨씬 더 빠른’으로 맞아요 👏<br>💡 ‘훨씬’ 5총사: <b>much · even · still · far · a lot</b>" },
+
+  { t:"ord", q:"우리말에 맞게 문장을 만드세요.<br>👉 <b>그녀는 내가 하는 것보다 영어를 훨씬 더 잘 말한다.</b>",
+    tiles:["She","speaks","English","much","better","than","I","do."],
+    answer:"She speaks English much better than I do.",
+    exp:"She speaks English <b>much better than I do</b>.<br>① ‘잘’은 well, 비교급은 불규칙이라 <b>better</b><br>② ‘내가 <b>하는</b> 것보다’ = than I <b>do</b> — 앞의 speaks English를 do가 대신 받아 줘요.<br>③ ‘훨씬’은 better 바로 앞에 <b>much</b><br>💡 지민이는 이 문장을 학습지에서도 정확히 썼어요. 오늘은 much까지 넣어서 한 단계 더 올렸어요 🚀" }
+
+  ]
+},
+{
+  id: "s2",
+  short: "단어 Day 32",
+  title: "2영역 · VOCA Day 32 집안일과 생활 습관",
+  desc: "<b>VOCA EXPRESS 중등 Day 32</b><br>개념 카드 2장 → 문제 5개 (객관식 4 + 낱말 배열 1)<br>닮은 ‘청소 동사’ 구별, fix의 두 가지 뜻, everyday / every day를 확인해요.",
+  quizId: "concept-hjm-0911-p2",
+  cards: [
+
+  "<h3>🧹 개념 카드 ④ — 무엇으로 치우나? <u>청소 동사</u> 구별</h3>우리말로는 다 ‘닦다·치우다’ 같지만, <b>도구와 방법</b>이 달라요.<table><tr><th>단어</th><th>뜻</th><th>이렇게 기억!</th></tr><tr><td><b>sweep</b><br>(swept)</td><td>(빗자루로) 쓸다</td><td>빗자루</td></tr><tr><td><b>mop</b></td><td>대걸레로 닦다</td><td>대걸레</td></tr><tr><td><b>wipe</b></td><td>닦다, 훔치다</td><td>행주·휴지로 슥슥</td></tr><tr><td><b>dust</b></td><td>먼지 / 먼지를 털다</td><td>명사·동사 둘 다</td></tr><tr><td><b>iron</b></td><td>다리미 / 다리미질하다</td><td>My dad <b>irons</b> his shirts.</td></tr><tr><td><b>fold</b></td><td>(옷을) 개다, 접다</td><td>Fold the clean clothes.</td></tr></table><div class='fix'><b>‘정리하다’ 삼총사</b><br>· <b>tidy</b> — 깔끔한 / 정리하다 (Keep your room <b>tidy</b>.)<br>· <b>organize</b> — (일정·물건을) 정리하다 (<b>Organize</b> your schedule.)<br>· <b>arrange</b> — 배열하다, 가지런히 정리하다 (She <b>arranged</b> the books.)</div><div class='tip'>💡 집안일 = <b>chore</b> / 세탁물 = <b>laundry</b> / 찬장 = <b>cupboard</b> / 채우다 = <b>fill</b> / 재활용하다 = <b>recycle</b></div>",
+
+  "<h3>🔑 개념 카드 ⑤ — 헷갈리기 쉬운 짝꿍</h3><div class='fix'><b>① fix는 뜻이 두 개!</b><br>· 고치다 (= <b>repair</b>): My dad can <b>fix</b> the broken chair.<br>· 고정하다: <b>Fix</b> the shelf to the wall. (선반을 벽에 고정시켜라)<br>👉 뒤에 <b>to the wall / on the board</b>처럼 ‘어디에 붙이는지’가 나오면 <b>고정하다</b>!</div><div class='warn'><b>② everyday vs every day</b><br>· <b>everyday</b> (한 단어) = <b>매일의, 일상의</b> → 명사 앞에서 꾸며요.<br>&nbsp;&nbsp;Exercise is part of my <b>everyday</b> routine.<br>· <b>every day</b> (띄어 씀) = <b>매일</b> → 문장 끝에서 ‘언제’를 말해요.<br>&nbsp;&nbsp;I exercise <b>every day</b>.</div><div class='ex'><b>③ 쓰레기 가족</b><br><b>trash</b> = <b>garbage</b> (쓰레기) · <b>trash can</b> (쓰레기통)<br><b>leftovers</b> (남은 음식) — 보통 <b>-s</b>를 붙여서 써요.</div><div class='tip'>💡 <b>household</b> 가정(의) · <b>indoor</b> 실내의 · <b>routine</b> 일과, 루틴 · <b>habit</b> 습관<br>지민이는 trash, everyday, organize를 스스로 고쳐서 맞혔어요. <b>철자까지</b> 한 번 더 눈에 담아요 👀</div>"
+
+  ],
+  items: [
+
+  { t:"mc", q:"빈칸에 알맞은 것은?<br>I ______ the kitchen floor with a broom.<span class='kr'>(나는 빗자루로 부엌 바닥을 쓸었다.)</span>",
+    choices:["swept","wiped","ironed","folded"], answer:"swept",
+    exp:"정답은 <b>swept</b>예요.<br>‘빗자루(broom)로 쓸다’는 <b>sweep</b>이고, 과거형은 불규칙이라 <b>swept</b>예요. (sweep – swept – swept)<br>· <b>wiped</b>: 행주나 휴지로 ‘닦았다’라서 빗자루와 어울리지 않아요.<br>· <b>ironed</b>: ‘다리미질했다’ — 바닥을 다리미질하지는 않죠 😄<br>· <b>folded</b>: ‘(옷을) 갰다’라는 뜻이에요." },
+
+  { t:"mc", q:"밑줄 친 <b>fix</b>와 <b>같은 뜻</b>으로 쓰인 것은?<br><u>Fix</u> the shelf to the wall.<span class='kr'>(선반을 벽에 고정시켜라.)</span>",
+    choices:["Please fix the poster on the board.","My dad can fix the broken chair.","He will fix my bike tomorrow.","Can you fix this old radio?"],
+    answer:"Please fix the poster on the board.",
+    exp:"정답은 <b>Please fix the poster on the board.</b>예요.<br>주어진 문장의 fix는 ‘벽에 <b>고정하다</b>’라는 뜻이죠. 포스터를 게시판에 붙여 <b>고정하는</b> 문장도 같은 뜻이에요. (on the board → 어디에 붙이는지가 나와요!)<br>· <b>fix the broken chair</b>: 부서진 의자를 <b>고치다</b><br>· <b>fix my bike</b>: 자전거를 <b>고치다</b><br>· <b>fix this old radio</b>: 오래된 라디오를 <b>고치다</b><br>👉 이 세 문장의 fix는 모두 <b>repair(수리하다)</b>로 바꿔 쓸 수 있어요." },
+
+  { t:"mc", q:"빈칸에 알맞은 것은?<br>Exercise is part of my ______ routine.<span class='kr'>(운동은 나의 매일의 일과 중 일부이다.)</span>",
+    choices:["everyday","every day","all day","every days"], answer:"everyday",
+    exp:"정답은 <b>everyday</b>예요.<br>빈칸 뒤에 명사 <b>routine</b>이 있죠? 명사를 꾸며 ‘<b>매일의</b>, 일상의’라는 뜻을 만드는 건 붙여 쓴 <b>everyday</b>예요.<br>· <b>every day</b>: 띄어 쓰면 ‘매일’이라는 뜻으로, 문장 끝에서 ‘언제’를 말할 때 써요. (I exercise every day.)<br>· <b>all day</b>: ‘하루 종일’이라는 뜻이라 명사를 꾸미지 않아요.<br>· <b>every days</b>: every 뒤에는 <b>단수</b>가 오기 때문에 days처럼 -s를 붙이지 않아요." },
+
+  { t:"ord", q:"우리말에 맞게 문장을 만드세요.<br>👉 <b>깨끗한 옷을 개어서 서랍에 넣어라.</b>",
+    tiles:["Fold","the","clean","clothes","and","put","them","in","the","drawer."],
+    answer:"Fold the clean clothes and put them in the drawer.",
+    exp:"<b>Fold</b> the clean clothes and <b>put them in</b> the drawer.<br>① ‘~해라’는 명령문이라 동사 <b>Fold</b>로 시작해요.<br>② ‘깨끗한 옷’ = the <b>clean</b> clothes (형용사는 명사 앞)<br>③ ‘그것들을 서랍 안에 넣다’ = put <b>them</b> in the drawer — them은 앞의 clothes를 가리켜요.<br>💡 <b>the</b>가 두 번 나와요. 하나는 clothes 앞, 하나는 drawer 앞!" },
+
+  { t:"mc", q:"두 단어의 뜻이 <b>비슷한 짝이 아닌</b> 것은?",
+    choices:["wipe – recycle","repair – fix","trash – garbage","tidy – organize"], answer:"wipe – recycle",
+    exp:"비슷한 짝이 아닌 것은 <b>wipe – recycle</b>이에요.<br><b>wipe</b>는 ‘닦다’, <b>recycle</b>은 ‘재활용하다’라서 뜻이 전혀 달라요.<br>나머지는 모두 비슷한 뜻이에요 👏<br>· <b>repair – fix</b>: 둘 다 ‘고치다, 수리하다’<br>· <b>trash – garbage</b>: 둘 다 ‘쓰레기’<br>· <b>tidy – organize</b>: 둘 다 ‘정리하다’" }
+
+  ]
+},
+{
+  id: "s3",
+  short: "구문독해",
+  title: "3영역 · 구문독해 Unit 07 핵심 표현",
+  desc: "<b>구문독해 Unit 07 · 7-2 Betty Bronson / 7-3 여드름</b><br>개념 카드 2장 → 문제 5개 (객관식 4 + 낱말 배열 1)<br>수업 시간에 필기한 <b>give up · go on · go away</b>를 확인해요.",
+  quizId: "concept-hjm-0911-p3",
+  cards: [
+
+  "<h3>🎬 개념 카드 ⑥ — Betty Bronson 글의 <u>포기 vs 계속</u></h3><div class='ex'>However, Betty <b>never gave up</b>.<br>She <b>went on working</b> as an extra.<br>A famous director was <b>looking for</b> an actress to play Peter Pan.</div><table><tr><th>표현</th><th>뜻</th><th>같은 말 / 반대 말</th></tr><tr><td><b>give up</b><br>(gave up)</td><td>포기하다</td><td>= <b>stop trying</b> (노력을 멈추다)</td></tr><tr><td><b>never give up</b></td><td>절대 포기하지 않다</td><td>= <b>keep trying</b> (계속 노력하다)<br>≠ give up</td></tr><tr><td><b>go on + -ing</b><br>(went on)</td><td>계속 ~하다</td><td>= <b>keep + -ing</b><br>went on working = kept working</td></tr><tr><td><b>look for</b></td><td>~을 찾다</td><td>was looking for = 찾고 <b>있었다</b></td></tr></table><div class='tip'>💡 선생님 필기 그대로!<br><b>gave up = stopped trying</b><br><b>gave up ≠ never gave up</b><br>never 한 단어가 붙으면 뜻이 <b>정반대</b>가 돼요.</div>",
+
+  "<h3>🌱 개념 카드 ⑦ — 여드름 글의 <u>go away</u>와 반대말 찾기</h3><div class='ex'>You can't make pimples <b>go away</b> by popping or squeezing.<br>(짜거나 터뜨려서 여드름을 <b>없앨</b> 수는 없다.)<br><b>Patience</b> is the key for dealing with pimples.<br>(<b>인내심</b>이 여드름을 <b>처리하는</b> 비결이다.)</div><div class='fix'><b>go away = disappear = vanish</b> (사라지다)<br><b>go away ≠ appear</b> (나타나다)<br>👉 dis-가 붙으면 반대! appear ↔ <b>dis</b>appear</div><div class='ex'><b>함께 알아 둘 표현</b><br>· <b>deal with</b> ~을 처리하다, 다루다<br>· <b>the key for / to</b> ~의 비결, 핵심<br>· <b>swollen</b> 부어오른 · <b>squeeze</b> 짜다 · <b>remove</b> 없애다</div><div class='tip'>💡 <b>반대 의미 찾기 요령</b><br>‘짜기·터뜨리기(popping or squeezing)’는 <b>서두르는 행동</b>이죠.<br>그 반대는 <b>기다리기</b> → <b>Patience</b>(인내심)!<br>지민이는 이 문제를 정확히 골랐어요 👏 이유까지 말로 설명할 수 있으면 완벽해요.</div>"
+
+  ],
+  items: [
+
+  { t:"mc", q:"다음 문장과 <b>뜻이 같은</b> 것은?<br>Betty never gave up.",
+    choices:["Betty kept trying.","Betty stopped trying.","Betty went away.","Betty looked for a job."],
+    answer:"Betty kept trying.",
+    exp:"정답은 <b>Betty kept trying.</b>이에요.<br><b>never gave up</b> = ‘절대 포기하지 않았다’ = ‘계속 노력했다’ → <b>kept trying</b><br>· <b>stopped trying</b>: ‘노력을 멈췄다’ = gave up (포기했다) → never가 붙은 문장과 <b>정반대</b>예요.<br>· <b>went away</b>: ‘떠났다, 사라졌다’라는 뜻이에요.<br>· <b>looked for a job</b>: ‘일자리를 찾았다’라는 뜻이라 포기와 관계가 없어요.<br>💡 선생님 필기: <b>gave up ≠ never gave up</b>" },
+
+  { t:"mc", q:"빈칸에 알맞은 것은?<br>Don't touch it. The pimple will ______ a few days later.<span class='kr'>(그것을 만지지 마. 여드름은 며칠 뒤에 사라질 거야.)</span>",
+    choices:["go away","give up","look for","go on"], answer:"go away",
+    exp:"정답은 <b>go away</b>예요.<br>‘사라지다’ = <b>go away</b> = disappear = vanish<br>· <b>give up</b>: ‘포기하다’ — 여드름이 포기한다는 건 어색하죠.<br>· <b>look for</b>: ‘~을 찾다’라서 뒤에 찾는 대상이 필요해요.<br>· <b>go on</b>: ‘계속하다’라서 ‘사라지다’와 거리가 멀어요." },
+
+  { t:"mc", q:"<b>go away</b>와 <b>반대 의미</b>인 것은?",
+    choices:["appear","disappear","vanish","remove"], answer:"appear",
+    exp:"정답은 <b>appear</b>(나타나다)예요.<br>go away는 ‘사라지다’이니까 반대는 ‘<b>나타나다</b>’죠!<br>· <b>disappear</b>, <b>vanish</b>: 둘 다 ‘사라지다’라서 go away와 <b>같은</b> 뜻이에요.<br>· <b>remove</b>: ‘없애다, 제거하다’라서 역시 사라지게 하는 쪽이에요.<br>💡 appear 앞에 <b>dis-</b>를 붙이면 반대말 disappear가 돼요." },
+
+  { t:"ord", q:"우리말에 맞게 문장을 만드세요.<br>👉 <b>그녀는 절대 포기하지 않았고 계속 일했다.</b>",
+    tiles:["She","never","gave","up","and","went","on","working."],
+    answer:"She never gave up and went on working.",
+    exp:"She <b>never gave up</b> and <b>went on working</b>.<br>① ‘절대 포기하지 않았다’ = <b>never gave up</b> — never는 동사 gave <b>앞</b>에 와요.<br>② ‘계속 일했다’ = <b>went on working</b> — go on 뒤에는 <b>-ing</b>!<br>③ 두 동작을 <b>and</b>로 이어요.<br>💡 Betty Bronson 이야기의 핵심 문장이에요. 입으로 세 번 읽어 보면 오래 기억나요 🎬" },
+
+  { t:"mc", q:"다음 문장의 뜻으로 알맞은 것은?<br>Patience is the key for dealing with pimples.",
+    choices:["인내심이 여드름을 처리하는 비결이다.","여드름을 처리할 때는 빨리 짜는 것이 핵심이다.","여드름은 인내심을 기르는 좋은 방법이다.","열쇠를 이용하면 여드름을 없앨 수 있다."],
+    answer:"인내심이 여드름을 처리하는 비결이다.",
+    exp:"정답은 <b>인내심이 여드름을 처리하는 비결이다.</b>예요.<br>· <b>Patience</b> = 인내심 (주어)<br>· <b>the key for</b> ~ = ~의 <b>비결, 핵심</b> (여기서 key는 ‘열쇠’가 아니에요!)<br>· <b>dealing with</b> pimples = 여드름을 <b>처리하는 것</b><br>오답 살펴보기<br>· ‘빨리 짜는 것이 핵심’: 글에서는 짜면 안 된다고 했어요. 주어도 Patience가 아니게 돼요.<br>· ‘여드름은 인내심을 기르는 방법’: 주어와 설명이 뒤바뀌었어요.<br>· ‘열쇠를 이용하면’: key를 진짜 열쇠로 잘못 해석했어요." }
+
+  ]
+}
+];
+
+/* ══════ 진행 로직 ══════ */
+var STORE_KEY = "engfit-hanjimin-0911-concept";
+var store = { name: "", secs: {} };
+var selSec = null;       // 선택된 영역 index
+var cur = null;          // 현재 영역 index
+var segStart = 0;        // 시간 측정 구간 시작
+var locked = false;
+var reviewReturn = false; // 문제 풀다가 카드 다시 보기 중인지
+var CIRCLED = ["①","②","③","④","⑤"];
+
+function $(id){ return document.getElementById(id); }
+function show(id){ $(id).classList.remove("hidden"); }
+function hide(id){ $(id).classList.add("hidden"); }
+function strip(s){ return String(s||"").replace(/<[^>]*>/g,""); }
+function norm(s){ return String(s||"").toLowerCase().replace(/[‘’'`´]/g,"").replace(/[^a-z0-9]+/g," ").trim(); }
+
+/* 전체 문항 번호: 영역별 시작 번호 */
+var OFFSET = [];
+(function(){ var n = 0; SECTIONS.forEach(function(s){ OFFSET.push(n); n += s.items.length; }); })();
+var TOTAL_Q = OFFSET[OFFSET.length-1] + SECTIONS[SECTIONS.length-1].items.length;
+
+function loadStore(){
+  try { var s = JSON.parse(localStorage.getItem(STORE_KEY) || "null");
+    if (s && typeof s === "object" && s.secs) store = s;
+  } catch(e){}
+}
+function saveStore(){
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(store)); } catch(e){}
+}
+function st(si){ return store.secs[SECTIONS[si].id]; }
+
+function shuffle(arr){
+  var a = arr.slice();
+  for (var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
+  return a;
+}
+/* 정답 위치 균등 분산 + 같은 위치 3연속 금지 */
+function balancedAssign(n, k){
+  for (var tries = 0; tries < 300; tries++){
+    var pool = [];
+    for (var i=0;i<n;i++) pool.push(i % k);
+    pool = shuffle(pool);
+    var bad = false;
+    for (var j=2;j<pool.length;j++){ if (pool[j]===pool[j-1] && pool[j]===pool[j-2]) { bad = true; break; } }
+    if (!bad) return pool;
+  }
+  return pool;
+}
+function makeOrder(si){
+  var sec = SECTIONS[si], order = {};
+  var mcIdx = [];
+  sec.items.forEach(function(it, i){ if (it.t === "mc") mcIdx.push(i); });
+  var pos = balancedAssign(mcIdx.length, 4);
+  mcIdx.forEach(function(idx, m){
+    var it = sec.items[idx];
+    var others = shuffle(it.choices.filter(function(c){ return c !== it.answer; }));
+    others.splice(pos[m], 0, it.answer);
+    order[idx] = others;
+  });
+  return order;
+}
+function freshState(si){
+  return { cur: 0, log: [], order: makeOrder(si), elapsed: 0, done: false, cardsSeen: false, score: 0, total: SECTIONS[si].items.length };
+}
+function tick(){
+  if (cur === null || !segStart) return;
+  var s = st(cur); if (!s) return;
+  var now = Date.now(); s.elapsed += (now - segStart); segStart = now;
+}
+
+/* ─── 첫 화면 ─── */
+var nameInput = $("name-input"), startBtn = $("start-btn");
+
+function renderGrid(){
+  var g = $("sec-grid"); g.innerHTML = "";
+  SECTIONS.forEach(function(sec, si){
+    var s = st(si);
+    var b = document.createElement("button");
+    b.className = "sec-btn" + (selSec === si ? " sel" : "");
+    b.setAttribute("data-sec", si);
+    var badge = "";
+    if (s && s.done) badge = '<span class="bd ok">✓ ' + s.score + '/' + s.total + '</span>';
+    else if (s && (s.cur > 0 || s.cardsSeen)) badge = '<span class="bd ing">진행 ' + s.cur + '/' + s.total + '</span>';
+    b.innerHTML = '<span class="n">' + (si+1) + '영역</span><span class="s">' + sec.short + '</span><span class="c">' + sec.items.length + '문항</span>' + badge;
+    b.addEventListener("click", function(){ selSec = si; renderStart(); });
+    g.appendChild(b);
+  });
+}
+function renderStart(){
+  renderGrid();
+  var nameOk = nameInput.value.trim().length > 0;
+  hide("restart-sec-btn");
+  if (selSec === null){
+    $("sec-desc").innerHTML = "풀고 싶은 영역을 골라 주세요. 어느 영역부터 풀어도 괜찮아요 🙂";
+    startBtn.disabled = true;
+    startBtn.textContent = nameOk ? "영역을 골라 주세요" : "이름과 영역을 먼저 골라 주세요";
+  } else {
+    var sec = SECTIONS[selSec], s = st(selSec);
+    $("sec-desc").innerHTML = sec.desc;
+    if (s && s.done) startBtn.textContent = "다시 풀기 (지난 점수 " + s.score + "/" + s.total + ")";
+    else if (s && (s.cur > 0 || s.cardsSeen)) { startBtn.textContent = "이어서 풀기 (Q" + (OFFSET[selSec] + s.cur + 1) + "부터)"; show("restart-sec-btn"); }
+    else startBtn.textContent = "시험 시작 (" + sec.items.length + "문항)";
+    startBtn.disabled = !nameOk;
+    if (!nameOk) startBtn.textContent = "이름을 먼저 입력해 주세요";
+  }
+  // 세 영역 모두 완료 시 전체 결과 복사
+  var allDone = SECTIONS.every(function(_, si){ var s = st(si); return s && s.done; });
+  if (allDone){
+    var sum = 0;
+    var parts = SECTIONS.map(function(sec, si){ var s = st(si); sum += s.score; return (si+1) + "영역 " + s.score + "/" + s.total; });
+    $("total-line").textContent = parts.join(" · ") + " · 총 " + sum + "/" + TOTAL_Q;
+    show("total-box");
+  } else hide("total-box");
+}
+function goStart(){
+  tick(); saveStore(); cur = null; segStart = 0;
+  hide("quiz-card"); hide("result-card"); show("start-card");
+  $("total-copy-btn").textContent = "전체 결과 한 번에 복사";
+  renderStart(); window.scrollTo(0,0);
+}
+
+nameInput.addEventListener("input", function(){ renderStart(); });
+nameInput.addEventListener("keydown", function(e){ if (e.key === "Enter" && !startBtn.disabled) startBtn.click(); });
+
+startBtn.addEventListener("click", function(){
+  var nm = nameInput.value.trim();
+  if (!nm || selSec === null) return;
+  store.name = nm;
+  var s = st(selSec);
+  if (!s || s.done) store.secs[SECTIONS[selSec].id] = freshState(selSec);
+  saveStore();
+  begin(selSec);
+});
+$("restart-sec-btn").addEventListener("click", function(){
+  var nm = nameInput.value.trim();
+  if (!nm || selSec === null) return;
+  store.name = nm;
+  store.secs[SECTIONS[selSec].id] = freshState(selSec);
+  saveStore();
+  begin(selSec);
+});
+$("reset-all-btn").addEventListener("click", function(){
+  if (!confirm("모든 영역의 기록을 지우고 처음부터 다시 시작할까요?")) return;
+  try { localStorage.removeItem(STORE_KEY); } catch(e){}
+  store = { name: "", secs: {} }; selSec = null; nameInput.value = "";
+  renderStart();
+});
+
+function begin(si){
+  cur = si; segStart = Date.now(); locked = false; reviewReturn = false;
+  hide("start-card"); hide("result-card"); show("quiz-card");
+  $("sec-name").textContent = SECTIONS[si].title;
+  var s = st(si);
+  if (!s.cardsSeen) showCard(0); else renderItem();
+  window.scrollTo(0,0);
+}
+
+/* ─── 개념 카드 ─── */
+function showCard(k){
+  var sec = SECTIONS[cur], n = sec.cards.length;
+  $("progress").textContent = "개념 카드 " + (k+1) + " / " + n;
+  $("bar-fill").style.width = "0%";
+  var area = $("body-area"); area.innerHTML = "";
+  var c = document.createElement("div"); c.className = "concept"; c.innerHTML = sec.cards[k]; area.appendChild(c);
+  var nb = document.createElement("button"); nb.className = "btn"; nb.id = "next-btn";
+  var last = (k === n-1);
+  nb.textContent = last ? (reviewReturn ? "문제로 돌아가기 →" : "이해했어요! 문제 " + sec.items.length + "개 풀러 가기 →") : "이해했어요! 다음 카드 →";
+  nb.addEventListener("click", function(){
+    if (!last) { showCard(k+1); window.scrollTo(0,0); return; }
+    var s = st(cur); s.cardsSeen = true; reviewReturn = false; tick(); saveStore();
+    renderItem(); window.scrollTo(0,0);
+  });
+  area.appendChild(nb);
+  if (k > 0){
+    var pb = document.createElement("button"); pb.className = "btn ghost small"; pb.textContent = "← 이전 카드";
+    pb.addEventListener("click", function(){ showCard(k-1); window.scrollTo(0,0); });
+    area.appendChild(pb);
+  }
+}
+
+/* ─── 문제 ─── */
+function renderItem(){
+  var sec = SECTIONS[cur], s = st(cur);
+  var it = sec.items[s.cur], total = sec.items.length;
+  var no = OFFSET[cur] + s.cur + 1;
+  $("progress").textContent = "Q" + no + " · " + (s.cur+1) + " / " + total;
+  $("bar-fill").style.width = Math.round(s.cur/total*100) + "%";
+  var area = $("body-area"); area.innerHTML = "";
+  locked = false;
+
+  var qt = document.createElement("div"); qt.className = "qtext";
+  qt.innerHTML = "Q" + no + ". " + it.q;
+  area.appendChild(qt);
+
+  if (it.t === "mc"){
+    var shown = s.order[s.cur] || it.choices;
+    var box = document.createElement("div"); box.id = "choices";
+    shown.forEach(function(c, i){
+      var b = document.createElement("button"); b.className = "choice";
+      b.innerHTML = '<span class="num">' + CIRCLED[i] + '</span>' + c;
+      b.addEventListener("click", function(){ b.classList.add("picked"); pick(c); });
+      box.appendChild(b);
+    });
+    area.appendChild(box);
+  } else if (it.t === "ord"){
+    var h2 = document.createElement("div"); h2.className = "hint";
+    h2.innerHTML = "💬 낱말을 <b>순서대로 눌러</b> 문장을 완성하세요.<br>잘못 눌렀으면 <b>위 칸의 낱말을 다시 누르면</b> 빠져요.";
+    area.appendChild(h2);
+    var slot = document.createElement("div"); slot.className = "ord-slot"; slot.id = "ord-slot"; area.appendChild(slot);
+    var pool = document.createElement("div"); pool.className = "ord-pool"; pool.id = "ord-pool"; area.appendChild(pool);
+    var tiles = shuffle(it.tiles);
+    var picked = [];
+    var ck;
+    function redraw(){
+      slot.innerHTML = ""; pool.innerHTML = "";
+      if (picked.length === 0){
+        var ph = document.createElement("span"); ph.className = "ph"; ph.textContent = "여기에 낱말이 순서대로 들어가요";
+        slot.appendChild(ph);
+      }
+      picked.forEach(function(idx, p){
+        var b = document.createElement("button"); b.className = "tile placed"; b.textContent = tiles[idx];
+        b.addEventListener("click", function(){ picked.splice(p,1); redraw(); });
+        slot.appendChild(b);
+      });
+      tiles.forEach(function(tx, idx){
+        if (picked.indexOf(idx) >= 0) return;
+        var b = document.createElement("button"); b.className = "tile"; b.textContent = tx;
+        b.addEventListener("click", function(){ picked.push(idx); redraw(); });
+        pool.appendChild(b);
+      });
+      if (ck) ck.disabled = picked.length !== tiles.length;
+    }
+    var row = document.createElement("div"); row.className = "ord-btns";
+    var rb = document.createElement("button"); rb.className = "btn ghost"; rb.id = "ord-reset"; rb.textContent = "다시 하기";
+    rb.addEventListener("click", function(){ picked = []; redraw(); });
+    ck = document.createElement("button"); ck.className = "btn"; ck.id = "ord-check"; ck.textContent = "확인";
+    ck.addEventListener("click", function(){ pick(picked.map(function(i){ return tiles[i]; }).join(" ")); });
+    row.appendChild(rb); row.appendChild(ck);
+    area.appendChild(row);
+    redraw();
+  }
+
+  var rv = document.createElement("button"); rv.className = "btn ghost small"; rv.textContent = "📘 개념 카드 다시 보기";
+  rv.addEventListener("click", function(){ reviewReturn = true; showCard(0); window.scrollTo(0,0); });
+  area.appendChild(rv);
+  var bk = document.createElement("button"); bk.className = "btn ghost small"; bk.textContent = "← 영역 선택으로 (이어서 풀 수 있어요)";
+  bk.addEventListener("click", function(){ selSec = cur; goStart(); });
+  area.appendChild(bk);
+}
+
+function pick(chosen){
+  if (locked) return; locked = true;
+  var sec = SECTIONS[cur], s = st(cur), it = sec.items[s.cur];
+  var ok = (it.t === "mc") ? (chosen === it.answer) : (norm(chosen) === norm(it.answer));
+  s.log.push({ no: OFFSET[cur] + s.cur + 1, ok: ok, chosen: strip(chosen) || "(무응답)", answer: strip(it.answer), idx: s.cur });
+  s.cur++;
+  tick(); saveStore();
+  setTimeout(function(){
+    if (s.cur < sec.items.length) { renderItem(); window.scrollTo(0,0); }
+    else finish();
+  }, 250);
+}
+
+document.addEventListener("keydown", function(e){
+  if ($("quiz-card").classList.contains("hidden") || cur === null) return;
+  var nb = $("next-btn");
+  if (nb && (e.key === "Enter")) { nb.click(); return; }
+  var s = st(cur); var it = SECTIONS[cur].items[s.cur];
+  if (!it || it.t !== "mc" || !$("choices")) return;
+  var n = parseInt(e.key, 10);
+  var btns = $("choices").querySelectorAll(".choice");
+  if (n >= 1 && n <= btns.length) btns[n-1].click();
+});
+
+/* ─── 결과 ─── */
+function secSummary(si){
+  var s = st(si);
+  var wrong = s.log.filter(function(l){ return !l.ok; }).map(function(l){ return l.no; });
+  return { score: s.log.filter(function(l){ return l.ok; }).length, total: SECTIONS[si].items.length, wrong: wrong, min: Math.max(1, Math.round(s.elapsed/60000)) };
+}
+function finish(){
+  var si = cur, sec = SECTIONS[si], s = st(si);
+  tick();
+  var sm = secSummary(si);
+  s.done = true; s.score = sm.score; s.total = sm.total;
+  saveStore();
+
+  quietSubmit({
+    quizId: sec.quizId,
+    quizTitle: "한지민 개념 확인 클리닉 9/11 — " + sec.title,
+    student: store.name,
+    score: sm.score,
+    total: sm.total,
+    wrong: sm.wrong,
+    durationSec: Math.round(s.elapsed/1000),
+    detail: s.log.map(function(l){ return { no:l.no, ok:l.ok, chosen:l.chosen, answer:l.answer }; })
+  }, sec.quizId + "-" + s.log.length + "-" + Date.now());
+
+  segStart = 0;
+  showResult(si);
+}
+function showResult(si){
+  var sec = SECTIONS[si], s = st(si), sm = secSummary(si);
+  hide("quiz-card"); hide("start-card"); show("result-card");
+  $("result-title").textContent = sec.title + " 완료! 🎉";
+  $("score-line").textContent = sm.score + " / " + sm.total;
+  var pct = sm.score / sm.total;
+  $("score-sub").textContent = pct >= 0.9 ? "정말 잘했어요! 개념이 아주 탄탄해요 👏"
+    : pct >= 0.7 ? "잘하고 있어요! 틀린 부분만 해설로 채우면 완벽해요 💪"
+    : "끝까지 해낸 게 대단해요! 해설을 천천히 읽으면 다음엔 훨씬 쉬워져요 🌱";
+
+  var kb = $("kakao-btn"); kb.textContent = "결과 복사하기";
+  kb.onclick = function(){ copyText(kb, sectionMsg(si)); };
+
+  var nextSi = -1;
+  for (var k = 1; k <= SECTIONS.length; k++){ var t = (si + k) % SECTIONS.length; var ts = st(t); if (!ts || !ts.done) { nextSi = t; break; } }
+  var nx = $("next-sec-btn");
+  if (nextSi >= 0){
+    nx.classList.remove("hidden");
+    nx.textContent = "다음 영역 풀러 가기 → (" + (nextSi+1) + "영역 " + SECTIONS[nextSi].short + ")";
+    nx.onclick = function(){
+      var ns = st(nextSi); if (!ns || ns.done) store.secs[SECTIONS[nextSi].id] = freshState(nextSi);
+      saveStore(); selSec = nextSi; begin(nextSi);
+    };
+  } else nx.classList.add("hidden");
+
+  var box = $("explanations"); box.innerHTML = "";
+  s.log.forEach(function(l){
+    var it = sec.items[l.idx];
+    var d = document.createElement("div"); d.className = "exp" + (l.ok ? "" : " wrong");
+    var head = l.ok ? ("Q" + l.no + ". 정답! ⭕") : ("Q" + l.no + ". 다시 보기 — 내 답: " + l.chosen + " → 정답: " + l.answer);
+    d.innerHTML = '<span class="hd"></span><span class="qq">' + it.q + '</span>' + it.exp;
+    d.querySelector(".hd").textContent = head;
+    box.appendChild(d);
+  });
+  window.scrollTo(0,0);
+}
+function sectionMsg(si){
+  var sm = secSummary(si);
+  return "[영핏 개념 확인 클리닉 9/11]\n학생: " + store.name +
+    "\n영역: " + SECTIONS[si].title +
+    "\n점수: " + sm.score + " / " + sm.total +
+    "\n틀린 문항: " + (sm.wrong.length ? sm.wrong.map(function(n){ return "Q" + n; }).join(", ") : "없음") +
+    "\n풀이 시간: " + sm.min + "분";
+}
+function totalMsg(){
+  var sum = 0, lines = [];
+  SECTIONS.forEach(function(sec, si){
+    var sm = secSummary(si); sum += sm.score;
+    lines.push((si+1) + "영역 " + sec.short + ": " + sm.score + "/" + sm.total + " (틀린 문항: " + (sm.wrong.length ? sm.wrong.map(function(n){ return "Q" + n; }).join(", ") : "없음") + ")");
+  });
+  return "[영핏 개념 확인 클리닉 9/11 — 전체 결과]\n학생: " + store.name + "\n" + lines.join("\n") + "\n총점: " + sum + " / " + TOTAL_Q;
+}
+function copyText(btn, text){
+  function done(){ btn.textContent = "복사 완료! 카톡에 붙여넣기 하세요 ✓"; }
+  try {
+    navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text); done(); });
+  } catch(e){ fallbackCopy(text); done(); }
+}
+function fallbackCopy(text){
+  var ta = document.createElement("textarea"); ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+  document.body.appendChild(ta); ta.select();
+  var ok = false; try { ok = document.execCommand("copy"); } catch(e){}
+  document.body.removeChild(ta);
+  if (!ok) prompt("아래 내용을 길게 눌러 복사하세요", text);
+}
+
+$("back-btn").addEventListener("click", function(){ goStart(); });
+$("total-copy-btn").addEventListener("click", function(){ copyText($("total-copy-btn"), totalMsg()); });
+
+window.addEventListener("pagehide", function(){ tick(); saveStore(); });
+document.addEventListener("visibilitychange", function(){ if (document.hidden) { tick(); saveStore(); } else if (cur !== null) { segStart = Date.now(); } });
+
+/* 초기화 · 이어하기 */
+(function(){
+  loadStore();
+  if (store.name) nameInput.value = store.name;
+  // 진행 중인 영역이 있으면 미리 선택
+  for (var i = 0; i < SECTIONS.length; i++){ var s = st(i); if (s && !s.done && (s.cur > 0 || s.cardsSeen)) { selSec = i; break; } }
+  renderStart();
+})();
+</script>
+</body>
+</html>
