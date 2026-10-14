@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- engfit-inapp-escape v3 : 카톡으로 열면 항상 폰의 인터넷 브라우저(크롬·사파리)로 열고 카톡 안의 창은 닫기 -->
+<script>
+(function () {
+  try {
+    var ua = navigator.userAgent || "";
+    var isIOS = /iphone|ipad|ipod/i.test(ua) || (/Macintosh/i.test(ua) && (navigator.maxTouchPoints || 0) > 1);
+    if (!(isIOS || /android/i.test(ua))) return;
+    var here = String(location.href || "");
+    var go = window.__engfitTestNav || function (u) { window.location.href = u; };
+    if (/KAKAOTALK/i.test(ua)) {
+      go("kakaotalk://web/openExternal?url=" + encodeURIComponent(here));
+      setTimeout(function () { go(isIOS ? "kakaoweb://closeBrowser" : "kakaotalk://inappbrowser/close"); }, 500);
+    } else if (/\bLine\//i.test(ua) && !/[?&]openExternalBrowser=1/.test(here)) {
+      go(here + (here.indexOf("?") >= 0 ? "&" : "?") + "openExternalBrowser=1");
+    }
+  } catch (e) {}
+})();
+</script>
+<!-- /engfit-inapp-escape v3 -->
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light">
+<title>한지민 10/14 실력향상 클리닉 · 비교급·최상급·단어·심경 (44문항) — 영핏 지나티처</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background: #f0f4f4; color: #2B3A3D; min-height: 100vh; display: flex; justify-content: center; padding: 54px 14px 20px; word-break: keep-all; overflow-wrap: break-word; }
+  button, input { font-family: inherit; }
+  .wrap { width: 100%; max-width: 580px; }
+  .card { background: #fff; color: #2B3A3D; border-radius: 16px; padding: 26px 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); margin-bottom: 14px; }
+  h1 { font-size: 1.25rem; color: #2F7C83; margin-bottom: 6px; line-height: 1.5; }
+  .sub { font-size: 0.9rem; color: #6B7B7E; margin-bottom: 18px; line-height: 1.8; }
+  .sub b { color: #235E64; }
+  .logo { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .logo .mark { width: 30px; height: 30px; border-radius: 9px; background: #2F7C83; color: #fff; font-size: 1rem; font-weight: bold; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .logo .name { font-size: 0.85rem; font-weight: bold; color: #235E64; letter-spacing: -0.2px; }
+  .logo.slim { margin-bottom: 10px; }
+  .logo.slim .mark { width: 24px; height: 24px; border-radius: 7px; font-size: 0.85rem; }
+  .logo.slim .name { font-size: 0.78rem; }
+  input[type=text] { width: 100%; padding: 13px; font-size: 1.05rem; border: 1.5px solid #DBE4E5; border-radius: 10px; background: #fff; color: #2B3A3D; }
+  input[type=text]::placeholder { color: #9aa8a5; opacity: 1; }
+  .btn { display: block; width: 100%; margin-top: 14px; padding: 14px; font-size: 1.03rem; font-weight: bold; color: #fff; background: #2F7C83; border: none; border-radius: 10px; cursor: pointer; text-align: left; line-height: 1.5; }
+  .btn:disabled { background: #b8c4c2; color: #fff; cursor: default; }
+  .btn.sub-btn { background: #8fa5a1; color: #fff; }
+  .btn.center { text-align: center; }
+  .btn .cnt { display: inline-block; font-size: 0.82rem; font-weight: normal; opacity: 0.9; margin-left: 2px; }
+  .btn.done { background: #cfe0dc; color: #35524c; }
+  .progress { font-size: 0.85rem; color: #6B7B7E; margin-bottom: 4px; display: flex; justify-content: space-between; }
+  .srctag { display: inline-block; font-size: 0.75rem; color: #235E64; background: #E6F1F1; border-radius: 6px; padding: 3px 8px; margin-bottom: 10px; line-height: 1.6; }
+  .srctag .lv { display: inline-block; font-size: 0.7rem; padding: 0 6px; border-radius: 5px; margin-right: 5px; background: #2F7C83; color: #fff; }
+  .srctag .lv.hi { background: #a07800; color: #fff; }
+  .srctag .lv.cp { background: #38699e; color: #fff; }
+  .srctag .lv.wr { background: #7a5aa6; color: #fff; }
+  .bar { height: 6px; background: #e3ecea; border-radius: 3px; margin-bottom: 14px; overflow: hidden; }
+  .bar > div { height: 100%; background: #2F7C83; border-radius: 3px; width: 0; transition: width .25s; }
+  .cardbox { background: #fff8e6; border: 1px solid #f2e2b3; border-radius: 12px; padding: 16px; margin-bottom: 14px; font-size: 0.94rem; line-height: 1.95; color: #4a4023; }
+  .cardbox h2 { font-size: 1.02rem; color: #a07800; margin-bottom: 10px; line-height: 1.55; }
+  .cardbox .ex, details.tip .ex { display: block; background: #fffdf6; color: #4a4023; border-left: 3px solid #e5cf8a; border-radius: 6px; padding: 10px 12px; margin: 9px 0; font-size: 0.92rem; line-height: 1.95; }
+  .cardbox b, details.tip b { color: #8a6400; }
+  details.tip { background: #fff8e6; border: 1px solid #f2e2b3; border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.9rem; line-height: 1.8; color: #6b5a1e; }
+  details.tip summary { cursor: pointer; font-weight: bold; color: #a07800; font-size: 0.85rem; }
+  details.tip .inner { margin-top: 8px; }
+  .hear { display: block; font-size: 0.82rem; color: #235E64; background: #E6F1F1; border-radius: 8px; padding: 6px 10px; margin-bottom: 4px; }
+  .wordchip { display: inline-block; margin: 2px 2px; padding: 1px 8px; font-size: 0.88rem; line-height: 1.7; color: #235E64; background: #E6F1F1; border: 1px solid #cfe0dc; border-radius: 12px; cursor: pointer; white-space: nowrap; }
+  .wordchip:active { background: #d4e8e7; }
+  .kor { display: block; font-size: 0.9rem; color: #6B7B7E; margin-bottom: 8px; line-height: 1.7; }
+  .kor b { color: #235E64; }
+  .qtext { font-size: 1.06rem; line-height: 1.9; margin-bottom: 14px; color: #2B3A3D; }
+  .qtext .kr { display: block; font-size: 0.86rem; color: #6B7B7E; margin: 2px 0 6px; line-height: 1.7; }
+  .qtext .blank { color: #2F7C83; font-weight: bold; white-space: nowrap; }
+  .choice { display: block; width: 100%; text-align: left; padding: 13px 14px; margin-bottom: 9px; font-size: 1rem; color: #2B3A3D; background: #f6f9f8; border: 1.5px solid #DBE4E5; border-radius: 10px; cursor: pointer; line-height: 1.55; }
+  .choice:active { background: #E6F1F1; }
+  .num { color: #2F7C83; font-weight: bold; margin-right: 7px; }
+  .say { display: inline-block; margin-left: 8px; padding: 1px 7px; font-size: 0.92rem; border-radius: 7px; color: #235E64; background: #E6F1F1; cursor: pointer; }
+  .saybtn { display: block; width: 100%; margin: 0 0 12px; padding: 10px; font-size: 0.93rem; font-weight: bold; color: #235E64; background: #E6F1F1; border: 1.5px solid #cfe0dc; border-radius: 10px; cursor: pointer; }
+  .keyhint { font-size: 0.78rem; color: #8a9895; text-align: center; margin-top: 10px; line-height: 1.6; }
+  .warn { font-size: 0.85rem; color: #b03a2e; background: #fdf5f4; border: 1px solid #f0c9c4; border-radius: 8px; padding: 8px 12px; margin-bottom: 10px; line-height: 1.7; }
+  .slot { min-height: 62px; background: #f6f9f8; border: 1.5px dashed #b9cdcb; border-radius: 10px; padding: 10px; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
+  .slot .ph { color: #9aa8a5; font-size: 0.88rem; padding: 6px 2px; }
+  .tile { display: inline-block; padding: 9px 13px; font-size: 1rem; color: #2B3A3D; background: #fff; border: 1.5px solid #DBE4E5; border-radius: 9px; cursor: pointer; line-height: 1.4; }
+  .tile.used { visibility: hidden; }
+  .slot .tile { background: #2F7C83; color: #fff; border-color: #2F7C83; }
+  .tilebox { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .rowbtn { display: flex; gap: 8px; }
+  .rowbtn .btn { margin-top: 0; }
+  .score-big { font-size: 2rem; font-weight: bold; color: #2F7C83; text-align: center; margin: 10px 0; }
+  .exp { background: #f6f9f8; color: #2B3A3D; border-left: 4px solid #2F7C83; border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; font-size: 0.93rem; line-height: 1.85; }
+  .exp.wrong { border-left-color: #c0392b; background: #fdf5f4; }
+  .exp b { color: #235E64; }
+  .exp.wrong .exp-head b { color: #c0392b; }
+  .exp .ans-line { display: block; font-size: 0.85rem; color: #8a5b55; margin: 4px 0 6px; }
+  .exp .listen { display: inline-block; margin-top: 8px; padding: 5px 11px; font-size: 0.82rem; font-weight: bold; color: #235E64; background: #E6F1F1; border: 1px solid #cfe0dc; border-radius: 14px; cursor: pointer; }
+  .footer { text-align: center; font-size: 0.8rem; color: #8a9895; padding: 8px 0 24px; line-height: 1.7; }
+  #sound-toggle { position: fixed; top: 10px; right: 10px; z-index: 50; background: #fff; border: 1.5px solid #2F7C83; color: #2F7C83; border-radius: 20px; padding: 7px 13px; font-size: 0.8rem; font-weight: bold; cursor: pointer; box-shadow: 0 1px 5px rgba(0,0,0,0.09); }
+  #sound-toggle.off { border-color: #DBE4E5; color: #8a9895; background: #fff; }
+  .psg { background: #f3f8f8; color: #2B3A3D; border: 1.5px solid #cfe0dc; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; font-size: 0.95rem; line-height: 1.8; }
+  .psg b { color: #235E64; display: block; margin-bottom: 4px; font-size: 0.88rem; }
+  .psg .pline { display: block; color: #2B3A3D; padding: 1px 0; cursor: pointer; }
+  .psg .pnote { display: block; color: #6B7B7E; font-size: 0.86rem; margin-bottom: 4px; }
+  .ex .pline { display: block; margin-top: 6px; cursor: pointer; color: #235E64; font-weight: 600; }
+  .ex .pnote { display: block; color: #6B7B7E; font-size: 0.88rem; padding-left: 22px; }
+  .hidden { display: none !important; }
+  .nospeech .hear, .nospeech .listen, .nospeech .say, .nospeech .saybtn { display: none !important; }
+  .psg table.ctab { border-collapse: collapse; margin-top: 6px; font-size: 0.86rem; width: 100%; }
+  .psg table.ctab td { padding: 3px 4px; color: #2B3A3D; vertical-align: middle; }
+  .psg table.ctab td:first-child { width: 44%; }
+  .psg .cbar { display: inline-block; height: 11px; background: #7fb3b7; border-radius: 3px; vertical-align: middle; }
+  .psg u { text-decoration-color: #2F7C83; text-decoration-thickness: 2px; }
+</style>
+</head>
+<body>
+<button type="button" id="sound-toggle" title="소리 켜기 / 끄기">🔊 소리 켜짐</button>
+<div class="wrap">
+
+  <!-- 시작 화면 : 이름 + 영역 선택 -->
+  <div class="card" id="start-card">
+    <div class="logo"><div class="mark">영</div><div class="name">영핏 지나티처</div></div>
+    <h1>지민이의 10/14 실력향상 클리닉 ✨<br>비교급·최상급 · 단어 · 심경</h1>
+    <p class="sub">오답이유 카드 12장 + 문제 <b>44문항 (5영역)</b><br>
+    오늘 76문제 중 아쉬웠던 곳만 콕 집었어요. 단어 Day 36·37 은 거의 다 맞혔어요 👏<br>
+    각 영역은 <b>오답이유 카드 → 다시 보는 문제 → 유사문제 2개</b> 순서예요.<br>
+    🔊 버튼을 누르면 원어민 발음을 들을 수 있어요. 답을 고르면 정답 문장도 읽어 줘요.<br>
+    한 영역이 끝나면 결과를 복사해서 지나티처에게 카톡으로 보내주세요.<br>
+    푼 기록은 자동 저장되니 나눠서 풀어도 괜찮아요 🙂<br>
+    이름을 입력하고 시작할 영역을 골라 주세요!</p>
+    <input type="text" id="name-input" placeholder="이름을 입력하세요" maxlength="20" autocomplete="off">
+    <p class="sub" style="margin:16px 0 -4px">👇 시작할 영역을 골라 주세요 (어느 영역부터 풀어도 괜찮아요)</p>
+    <button class="btn sec-start" id="start-s1" data-sec="0" disabled>1영역 시작 · 최상급 모양 (the · most/-est)<br><span class="cnt">the tallest · most 와 -est 한 번만 · prettiest of · 카드 4 + 15문항</span></button>
+    <button class="btn sec-start sub-btn" id="start-s2" data-sec="1" disabled>2영역 시작 · 최상급 범위·순서 (in/of · last · one of)<br><span class="cnt">of the four seasons · came in last · one of the + 복수 · 카드 3 + 10문항</span></button>
+    <button class="btn sec-start sub-btn" id="start-s3" data-sec="2" disabled>3영역 시작 · 비교급 강조·조건 영작<br><span class="cnt">much cleaner (very ✗) · 키는 shorter · 카드 2 + 7문항</span></button>
+    <button class="btn sec-start sub-btn" id="start-s4" data-sec="3" disabled>4영역 시작 · 단어 Day 36·37<br><span class="cnt">skyscraper 철자 · 헷갈리는 짝꿍 · 카드 2 + 8문항</span></button>
+    <button class="btn sec-start sub-btn" id="start-s5" data-sec="4" disabled>5영역 시작 · 구문독해 심경 (p.44)<br><span class="cnt">but 뒤 진짜 마음 · be tired of · 카드 1 + 4문항</span></button>
+    <p class="keyhint" id="sec-done-note" style="margin-top:12px"></p>
+  </div>
+
+  <!-- 이어하기 화면 -->
+  <div class="card hidden" id="resume-card">
+    <div class="logo"><div class="mark">영</div><div class="name">영핏 지나티처</div></div>
+    <h1>이어서 풀 수 있어요! 🔄</h1>
+    <p class="sub" id="resume-info"></p>
+    <button class="btn center" id="resume-btn">이어서 하기</button>
+    <button class="btn sub-btn center" id="restart-btn">처음부터 다시 하기</button>
+  </div>
+
+  <!-- 카드 화면 -->
+  <div class="card hidden" id="cards-card">
+    <div class="logo slim"><div class="mark">영</div><div class="name">영핏 지나티처</div></div>
+    <div class="progress"><span id="card-num"></span><span id="card-sec"></span></div>
+    <div class="bar"><div id="card-bar"></div></div>
+    <div class="cardbox" id="cardbox"></div>
+    <button class="btn center" id="card-next">다음 →</button>
+    <button class="btn sub-btn center" id="card-skip">카드 건너뛰고 바로 문제 풀기</button>
+  </div>
+
+  <!-- 문제 화면 -->
+  <div class="card hidden" id="quiz-card">
+    <div class="logo slim"><div class="mark">영</div><div class="name">영핏 지나티처</div></div>
+    <div class="progress"><span id="prog-num"></span><span id="prog-pct"></span></div>
+    <div class="bar"><div id="bar-fill"></div></div>
+    <span class="srctag" id="srctag"></span>
+    <details class="tip" id="tipbox"><summary>💡 규칙 카드 다시 보기 (헷갈릴 때만 눌러요)</summary><div class="inner" id="tipinner"></div></details>
+    <div class="psg hidden" id="psg"></div>
+    <div class="qtext" id="qtext"></div>
+    <button class="saybtn hidden" id="say-btn" type="button">🔊 발음 듣기 (다시 들으려면 또 눌러요)</button>
+    <div id="choices"></div>
+    <div id="ord-area" class="hidden">
+      <div class="slot" id="ord-slot"></div>
+      <div class="tilebox" id="ord-tiles"></div>
+      <div class="warn hidden" id="ord-warn"></div>
+      <div class="rowbtn">
+        <button class="btn sub-btn center" id="ord-undo" style="flex:1">↩ 하나 지우기</button>
+        <button class="btn center" id="ord-check" style="flex:1">다 만들었어요 ✓</button>
+      </div>
+    </div>
+    <p class="keyhint" id="keyhint">숫자키 1~4로도 선택할 수 있어요</p>
+  </div>
+
+  <!-- 영역별 결과 화면 -->
+  <div class="card hidden" id="sec-result-card">
+    <div class="logo"><div class="mark">영</div><div class="name">영핏 지나티처</div></div>
+    <h1 id="sec-result-title"></h1>
+    <div class="score-big" id="sec-score"></div>
+    <p class="sub" id="sec-wrong" style="text-align:center"></p>
+    <p class="sub" style="text-align:center; margin-bottom:6px">📲 아래 버튼으로 결과를 복사해서 지나티처에게 카톡으로 꼭 보내주세요!</p>
+    <button class="btn center" id="sec-copy-btn"></button>
+    <button class="btn center" id="next-sec-btn" style="background:#38699e; color:#fff"></button>
+    <button class="btn sub-btn center" id="pick-sec-btn">다른 영역 고르기 →</button>
+    <div id="total-block" class="hidden" style="margin-top:22px; border-top:2px dashed #DBE4E5; padding-top:18px">
+      <p class="sub" style="text-align:center; margin-bottom:4px">🏆 전체 최종 결과</p>
+      <div class="score-big" id="total-score"></div>
+      <p class="sub" id="total-detail" style="text-align:center"></p>
+      <button class="btn center" id="total-copy-btn">전체 결과 복사 (카톡용)</button>
+    </div>
+    <div style="margin-top:20px">
+      <p class="sub" style="margin-bottom:10px">📝 이 영역 해설 — 틀린 문제 위주로 꼭 읽어 보세요! 🔊 버튼으로 정답 문장을 따라 읽어 봐요.</p>
+      <div id="sec-explanations"></div>
+    </div>
+  </div>
+
+  <div class="footer">영핏 지나티처 · 지민이의 10/14 실력향상 클리닉 · 끝까지 확인하면 만점! ✨</div>
+</div>
+
+<script>
+"use strict";
+/* ══════ 오답이유 카드 (영역별 전체 먼저) ══════ */
+var TIPS = {"카드 1 · A-1번 — '가장 ~한'은 하나뿐! 최상급 앞엔 꼭 the": "<b>🔍 Let's Check It Out A-1 다시 보기</b> — <b>tallest</b> 를 골랐는데, 정답은 <b>the tallest</b> 예요.<br>'가족 중에서 <b>가장</b> 키가 큰 사람'은 딱 <b>한 명</b>이죠? 하나로 콕 정해지니까 앞에 <b>the</b> 를 붙여요.<span class='ex'><span class='pline' data-say=\"Julie is the tallest in her family.\">🔊 Julie is the tallest in her family.</span><span class='pnote'>Julie는 가족 중에서 키가 가장 크다. (A-1 정답)</span></span><span class='ex'><b>🧠 한 줄 비법</b> : 최상급(-est / most)이 보이면 → 앞에 <b>the</b> 가 있는지 손가락으로 짚기!<br>tallest ❌ → <b>the</b> tallest ⭕</span>", "카드 2 · C-2·C-4번 — most 와 -est 는 둘 중 하나만 (같은 실수 2번!)": "<b>🔍 C-2 · C-4 다시 보기</b> — 두 문제 모두 <b>most + -est 를 한꺼번에</b> 썼어요. <b>같은 실수가 2번</b>이라 오늘 꼭 잡아요!<br>(9/11 클리닉의 much more cheaper 도 같은 모양 — '두 번 겹쳐 쓰기' 습관이에요.)<span class='ex'><b>📌 C-2</b> boringest → 정답 <b>most boring</b> (지민이 답: most boringest)<br><span class='pline' data-say=\"It was the most boring movie of all.\">🔊 It was the most boring movie of all.</span><span class='pnote'>그것은 모든 영화 중에서 가장 지루한 영화였다.</span></span><span class='ex'><b>📌 C-4</b> most fastest → 정답 <b>fastest</b> (지민이 답: fast)<br><span class='pline' data-say=\"This car is the fastest of them all.\">🔊 This car is the fastest of them all.</span><span class='pnote'>이 차가 그것들 모두 중에서 가장 빠르다.</span></span><span class='ex'><b>🧠 규칙</b><br>· 짧은 낱말(1음절, 2음절 -y) → <b>-est</b> : fastest, tallest, happiest<br>· 긴 낱말(2음절 이상) → <b>most</b> + 원급 : most boring, most famous<br>· <b>most 와 -est 는 절대 같이 안 써요!</b> most fastest ❌ / most boringest ❌<br>· C-4 처럼 most 를 지울 때 <b>-est 는 남겨야</b> '가장'이 돼요. fast(빠른) ❌ → fastest ⭕</span>", "카드 3 · C-3번 — '가장'이면 -er 이 아니라 -est": "<b>🔍 C-3 다시 보기</b> — the larger → <b>the largest</b>. 지민이가 <b>스스로 고쳐 썼어요</b> 👏 이번엔 처음부터 맞히기!<span class='ex'><b>📌 the larger</b> = (둘 중) 더 큰 쪽 &nbsp;/&nbsp; <b>the largest</b> = (여럿 중) 가장 큰<br><span class='pline' data-say=\"The strings are the largest group in the orchestra.\">🔊 The strings are the largest group in the orchestra.</span><span class='pnote'>현악 파트는 오케스트라에서 가장 큰 그룹이다.</span></span><span class='ex'><b>🧠 확인 순서</b> : 비교 대상이 <b>여럿</b>(in the orchestra, of all)이면 → <b>-est</b><br>large → largest (e 로 끝나면 <b>-st</b> 만), big → biggest (자음 한 번 더)</span>", "카드 4 · D-3번 — 주어진 낱말(pretty) 그대로 + of 끝까지": "<b>🔍 D-3 다시 보기</b> — 괄호 낱말은 <b>(pretty)</b> 였는데 <b>beautiful</b> 로 바꿔 썼고, 빈칸 셋째 칸의 <b>of</b> 도 빠졌어요.<span class='ex'><b>📌 정답</b><br><span class='pline' data-say=\"The rose is the prettiest of all flowers.\">🔊 The rose is the prettiest of all flowers.</span><span class='pnote'>장미가 모든 꽃 중에서 제일 예쁘다.</span></span><span class='ex'><b>🧠 규칙 2개</b><br>① 괄호 낱말은 <b>그 낱말 그대로</b> 바꿔 쓰기 → pretty → <b>prettiest</b> (자음+y 는 y → i + est)<br>② 빈칸 칸 수 세기 → the / prettiest / <b>of</b> — 칸이 남으면 빠진 말이 있다는 신호!<br><span class='wordchip' data-say='pretty'>🔊 pretty</span><span class='wordchip' data-say='prettiest'>🔊 prettiest</span><span class='wordchip' data-say='happiest'>🔊 happiest</span><span class='wordchip' data-say='easiest'>🔊 easiest</span></span>", "카드 5 · A-3번 — in + 장소·집단 / of + 여럿 무리": "<b>🔍 A-3 다시 보기</b> — Summer is the hottest [<b>in</b> / of] the four seasons 에서 <b>in</b> 을 골랐어요. 정답은 <b>of</b>.<span class='ex'><b>📌 in</b> + 장소·집단 (하나의 덩어리) : in my family, in my class, in the world, in this town</span><span class='ex'><b>📌 of</b> + 여럿 무리 (숫자·all·복수) : of the four seasons, of all, of the five, of them all</span><span class='ex'><span class='pline' data-say=\"Summer is the hottest of the four seasons.\">🔊 Summer is the hottest of the four seasons.</span><span class='pnote'>여름은 사계절 중에서 가장 덥다. (A-3 정답)</span></span><span class='ex'><b>🧠 한 줄 비법</b> : 뒤에 <b>숫자 · all · 복수명사</b>가 보이면 of, <b>장소·모임 이름</b>이면 in!</span>", "카드 6 · B-5번 — late 의 두 가족: latest(시간) / last(순서)": "<b>🔍 B-5 다시 보기</b> — Harris came in ( ) of all the players. (late) 에 <b>late</b> 를 그대로 썼어요. 정답은 <b>last</b>(꼴찌로).<span class='ex'><b>📌 late 의 두 가족</b><br>· <b>시간</b> : late – later – <b>latest</b> (최신의) → the latest news<br>· <b>순서</b> : late – latter – <b>last</b> (마지막의) → came in last, the last chance</span><span class='ex'><span class='pline' data-say=\"Harris came in last of all the players.\">🔊 Harris came in last of all the players.</span><span class='pnote'>Harris는 모든 선수 중에서 꼴찌로 들어왔다. (B-5 정답)</span></span><span class='ex'><b>🧠 비법</b> : of all ~ 이 있으니 <b>최상급</b> 자리 → late 그대로는 ❌. '몇 번째로 들어왔나' = 순서 → <b>last</b><br><span class='wordchip' data-say='latest'>🔊 latest</span><span class='wordchip' data-say='last'>🔊 last</span><span class='wordchip' data-say='later'>🔊 later</span><span class='wordchip' data-say='latter'>🔊 latter</span></span>", "카드 7 · Ready 3번 — one of the 최상급 + 복수명사(-s)": "<b>🔍 Ready for Exams(최상급) 3번 다시 보기</b> — 어색한 문장 <b>2개</b>를 찾는 문제에서 <b>하나만</b> 찾았어요(△). 하나 찾았다고 멈추지 말고 <b>끝까지</b> 확인!<span class='ex'><b>📌 놓친 것 ①</b> one of the smartest <b>animal</b> → <b>animals</b><br>'가장 ~한 것들 <b>중 하나</b>' = 여럿 중 하나니까 뒤는 <b>복수</b>!<br><span class='pline' data-say=\"The African grey parrot is one of the smartest animals.\">🔊 The African grey parrot is one of the smartest animals.</span><span class='pnote'>아프리카 회색 앵무새는 가장 똑똑한 동물 중 하나이다.</span></span><span class='ex'><b>📌 놓친 것 ②</b> the most quickest → <b>the quickest</b> (카드 2 의 이중 최상급과 같은 실수!)</span><span class='ex'><b>🧠 one of the 공식</b> : one of the + 최상급 + <b>복수명사(-s)</b> + 단수 동사(is)</span>", "카드 8 · Ready 3번 — 비교급 강조는 much (very ✗) — 두 번째 실수!": "<b>🔍 Ready for Exams(비교급) 3번 다시 보기</b> — My little sister's desk is <b>very</b> cleaner than mine. 에서 고칠 곳은 <b>very → much</b> 였는데 cleaner → more clean 을 골랐어요.<br>9/11 클리닉(비교급 강조)에 이어 <b>두 번째</b>로 나온 함정이라 콕 집어요!<span class='ex'><b>📌 비교급 강조 = '훨씬'</b> : <b>much · even · far · still · a lot</b> + 비교급<br><b>very</b> 는 원급 전용 (very clean ⭕ / very cleaner ❌)</span><span class='ex'><span class='pline' data-say=\"My little sister's desk is much cleaner than mine.\">🔊 My little sister's desk is much cleaner than mine.</span><span class='pnote'>내 여동생의 책상은 내 것보다 훨씬 더 깨끗하다.</span></span><span class='ex'><b>🧠 cleaner 는 이미 맞아요!</b> clean 은 1음절이라 <b>-er</b> → cleaner. more clean 은 오히려 틀린 모양이에요.<br><span class='wordchip' data-say='much'>🔊 much</span><span class='wordchip' data-say='even'>🔊 even</span><span class='wordchip' data-say='far'>🔊 far</span><span class='wordchip' data-say='still'>🔊 still</span><span class='wordchip' data-say='a lot'>🔊 a lot</span></span>", "카드 9 · Ready 4번 — 조건 끝까지: 키는 tall ↔ short": "<b>🔍 Ready for Exams(비교급) 4번 다시 보기</b> — 조건 2 <b>'키에 관한 것만'</b>. 앞 칸 taller than 은 완벽했어요 👍 그런데 뒤 칸에 <b>smaller</b>(크기가 작은)를 썼어요.<span class='ex'><b>📌 키(height)</b> : tall ↔ <b>short</b> → taller / <b>shorter</b><br><b>📌 크기(size)</b> : big ↔ small → bigger / smaller</span><span class='ex'><span class='pline' data-say=\"Ava is taller than Laura, but she is shorter than Ted.\">🔊 Ava is taller than Laura, but she is shorter than Ted.</span><span class='pnote'>Ava는 Laura보다 키가 크지만 Ted보다는 작다.</span></span><span class='ex'><b>🧠 서술형 비법</b> : 다 쓴 뒤 조건 1·2·3 을 하나씩 ✓ 체크! '키' 조건이면 tall / short 짝만 써요.</span>", "카드 10 · 47번 — skyscraper 는 s 가 두 번": "<b>🔍 단어 47번 다시 보기</b> — 정답 처리됐지만 철자가 <b>skycraper</b> 로 s 하나가 빠졌어요. 시험에서는 철자 하나로 틀릴 수 있어요!<span class='ex'><b>📌 skyscraper</b> = <b>sky</b>(하늘) + <b>scraper</b>(긁는 것) → 하늘을 긁을 만큼 높은 건물<br>sky + <b>s</b>craper → <b>s 가 두 번</b>!</span><span class='ex'><span class='wordchip' data-say='skyscraper'>🔊 skyscraper</span><span class='wordchip' data-say='ceiling'>🔊 ceiling</span><span class='wordchip' data-say='chimney'>🔊 chimney</span><span class='wordchip' data-say='hallway'>🔊 hallway</span><span class='wordchip' data-say='foundation'>🔊 foundation</span></span>", "카드 11 · Day 36·37 — 헷갈리기 쉬운 짝꿍 미리 잡기": "<b>😊 잘한 점 먼저!</b> 단어 Day 36·37 <b>50문제를 거의 다 맞혔어요</b> 👏 그래서 여기서는 시험에 자주 나오는 <b>헷갈리는 짝</b>만 한 번 더 확인해요.<span class='ex'><b>📌 sensible</b> 분별 있는, 현명한 ↔ <b>sensitive</b> 세심한, 예민한<br><b>📌 timid</b> 소심한(형용사) ↔ <b>coward</b> 겁쟁이(명사)<br><b>📌 optimistic</b> 낙관적인 ↔ <b>pessimistic</b> 비관적인<br><b>📌 humble · modest</b> 겸손한 ↔ <b>arrogant</b> 오만한</span><span class='ex'><span class='wordchip' data-say='sensible'>🔊 sensible</span><span class='wordchip' data-say='sensitive'>🔊 sensitive</span><span class='wordchip' data-say='timid'>🔊 timid</span><span class='wordchip' data-say='coward'>🔊 coward</span><span class='wordchip' data-say='optimistic'>🔊 optimistic</span><span class='wordchip' data-say='pessimistic'>🔊 pessimistic</span><span class='wordchip' data-say='humble'>🔊 humble</span><span class='wordchip' data-say='arrogant'>🔊 arrogant</span></span>", "카드 12 · 구문독해 p.44 1번 — 심경은 but 뒤에 숨어 있어요": "<b>🔍 구문독해 p.44 1번 다시 보기</b> — 수업 시간에 같이 읽으며 찾았던 단서가 바로 <b>but I am tired of ~</b> 였어요. (선생님 필기: but I am tired 그렇다)<span class='ex'><b>📌 심경 문제 3단계</b><br>① 글쓴이(I)의 말에 밑줄<br>② <b>but · however</b> 뒤를 특히 보기 → 진짜 마음은 뒤에!<br>③ 감정 낱말을 우리말로 바꾸기</span><span class='ex'><b>📌 be tired of ~</b> = ~에 질리다, 지겹다 (몸이 피곤한 게 아니에요!)<br><span class='pline' data-say=\"I'm happy for her, but I'm tired of hearing about him.\">🔊 I'm happy for her, but I'm tired of hearing about him.</span><span class='pnote'>언니가 잘돼서 기쁘지만, 그 남자 얘기 듣는 건 지겹다.</span></span><span class='ex'><b>🧠 비슷한 표현</b> : be sick of ~ (~에 질리다) · be fed up with ~ (~에 넌더리 나다) → 짜증·지겨움</span>"};
+var S1 = [{"tip": "카드 1 · A-1번 — '가장 ~한'은 하나뿐! 최상급 앞엔 꼭 the", "lv": "다시 보기", "src": "1영역 · Let's Check It Out A-1번 다시 보기", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "Julie is <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> in her family.", "choices": ["the tallest", "tallest", "the taller", "taller"], "answer": "the tallest", "spk": false, "say": "Julie is the tallest in her family.", "exp": "정답은 <b>the tallest</b> 👧 가족 중 '가장' 큰 사람은 한 명뿐이라 <b>the</b> 를 꼭 붙여요.<br>· <b>tallest</b> — the 가 빠졌어요 (지민이가 고른 답)<br>· <b>the taller</b> — '더 큰'(비교급)이라 '가장'이 아니에요<br>· <b>taller</b> — 비교급인데 than 도 없고 the 도 없어요"}, {"tip": "카드 1 · A-1번 — '가장 ~한'은 하나뿐! 최상급 앞엔 꼭 the", "lv": "기초", "src": "1영역 · A-1번 유사 ①", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>Tom은 우리 반에서 가장 똑똑한 소년이다.</span>Tom is <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> boy in our class.", "choices": ["the smartest", "smartest", "the smarter", "most smart"], "answer": "the smartest", "spk": false, "say": "Tom is the smartest boy in our class.", "exp": "정답은 <b>the smartest</b> 🧠<br>· <b>smartest</b> — 최상급 앞 the 빠짐<br>· <b>the smarter</b> — 비교급이라 '가장'이 아니에요<br>· <b>most smart</b> — smart 는 짧은 낱말이라 -est, 게다가 the 도 없어요"}, {"tip": "카드 1 · A-1번 — '가장 ~한'은 하나뿐! 최상급 앞엔 꼭 the", "lv": "심화", "src": "1영역 · A-1번 유사 ②", "kor": "다음 중 어법상 <b>알맞은</b> 문장을 고르세요.", "q": "최상급 앞 the + 철자까지 확인해요", "choices": ["This is the biggest room in the hotel.", "This is biggest room in the hotel.", "This is the bigest room in the hotel.", "This is the most big room in the hotel."], "answer": "This is the biggest room in the hotel.", "spk": false, "say": "This is the biggest room in the hotel.", "exp": "정답은 <b>This is the biggest room in the hotel.</b> 🏨<br>· <b>biggest room</b>(the 없음) — 최상급 앞 the 가 빠졌어요<br>· <b>the bigest</b> — big 은 '모음 하나 + 자음 하나'로 끝나서 g 를 한 번 더 → biggest<br>· <b>the most big</b> — big 은 짧은 낱말이라 most 가 아니라 -est"}, {"tip": "카드 2 · C-2·C-4번 — most 와 -est 는 둘 중 하나만 (같은 실수 2번!)", "lv": "다시 보기", "src": "1영역 · C-2번 다시 보기", "kor": "밑줄 친 부분을 바르게 고친 것을 고르세요.", "q": "It was the <u>boringest</u> movie of all.", "choices": ["most boring", "most boringest", "more boring", "boringer"], "answer": "most boring", "spk": false, "say": "It was the most boring movie of all.", "exp": "정답은 <b>most boring</b> 🎬 boring 은 2음절 긴 낱말이라 most + 원급!<br>· <b>most boringest</b> — most 와 -est 를 둘 다 썼어요 (지민이 답) → 하나만!<br>· <b>more boring</b> — '더 지루한'(비교급), of all 이 있으니 최상급 자리예요<br>· <b>boringer</b> — 긴 낱말에는 -er 을 붙이지 않아요"}, {"tip": "카드 2 · C-2·C-4번 — most 와 -est 는 둘 중 하나만 (같은 실수 2번!)", "lv": "다시 보기", "src": "1영역 · C-4번 다시 보기", "kor": "밑줄 친 부분을 바르게 고친 것을 고르세요.", "q": "This car is the <u>most fastest</u> of them all.", "choices": ["fastest", "fast", "most fast", "faster"], "answer": "fastest", "spk": false, "say": "This car is the fastest of them all.", "exp": "정답은 <b>fastest</b> 🚗 fast 는 짧은 낱말 → -est 만!<br>· <b>fast</b> — most 를 지우면서 -est 까지 지워 버렸어요 (지민이 답). the fast = '빠른'이라 '가장'이 사라져요<br>· <b>most fast</b> — 짧은 낱말에 most 는 안 써요<br>· <b>faster</b> — the + 비교급 + of them all 은 어울리지 않아요"}, {"tip": "카드 2 · C-2·C-4번 — most 와 -est 는 둘 중 하나만 (같은 실수 2번!)", "lv": "기초", "src": "1영역 · C-2번 유사 ①", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>그녀는 한국에서 가장 유명한 가수이다. (famous)</span>She is the <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> singer in Korea.", "choices": ["most famous", "most famousest", "famousest", "more famous"], "answer": "most famous", "spk": false, "say": "She is the most famous singer in Korea.", "exp": "정답은 <b>most famous</b> 🎤 famous 는 2음절 → most + 원급<br>· <b>most famousest</b> — most 와 -est 겹치기 ❌<br>· <b>famousest</b> — 긴 낱말은 -est 가 아니라 most<br>· <b>more famous</b> — 비교급이라 '가장'이 아니에요"}, {"tip": "카드 2 · C-2·C-4번 — most 와 -est 는 둘 중 하나만 (같은 실수 2번!)", "lv": "기초", "src": "1영역 · C-4번 유사 ①", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>나일강은 세계에서 가장 긴 강이다. (long)</span>The Nile is the <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> river in the world.", "choices": ["longest", "most longest", "most long", "longer"], "answer": "longest", "spk": false, "say": "The Nile is the longest river in the world.", "exp": "정답은 <b>longest</b> 🌊 long 은 1음절 → -est 만!<br>· <b>most longest</b> — 이중 최상급 ❌ (C-4 와 같은 함정)<br>· <b>most long</b> — 짧은 낱말에는 most 를 안 써요<br>· <b>longer</b> — the ~ in the world 는 최상급 자리예요"}, {"tip": "카드 2 · C-2·C-4번 — most 와 -est 는 둘 중 하나만 (같은 실수 2번!)", "lv": "심화", "src": "1영역 · C-2·C-4번 유사 ②", "kor": "다음 중 어법상 <b>어색한</b> 문장을 고르세요.", "q": "most 와 -est 를 겹쳐 쓴 문장을 찾아요", "choices": ["He is the most kindest boy in my class.", "She is the most careful driver of all.", "This is the hottest day of the year.", "It is the most interesting book in the library."], "answer": "He is the most kindest boy in my class.", "spk": false, "say": "", "exp": "어색한 문장은 <b>He is the most kindest boy in my class.</b> ✋ → the <b>kindest</b> 로 고쳐요 (kind 는 짧은 낱말 → -est 만)<br>· <b>the most careful</b> — careful 은 긴 낱말이라 most ⭕<br>· <b>the hottest</b> — hot 은 t 를 한 번 더 + est ⭕<br>· <b>the most interesting</b> — 긴 낱말 + most ⭕"}, {"tip": "카드 2 · C-2·C-4번 — most 와 -est 는 둘 중 하나만 (같은 실수 2번!)", "lv": "심화", "src": "1영역 · C-2번 유사 ③ (영작)", "type": "ord", "kor": "우리말에 맞게 조각을 순서대로 눌러 문장을 만드세요. (필요 없는 조각이 하나 섞여 있어요)", "q": "그것은 다섯 개 중에서 가장 비싼 가방이다.", "seq": ["It", "is", "the", "most", "expensive", "bag", "of", "the", "five."], "extra": ["expensivest"], "say": "It is the most expensive bag of the five.", "exp": "정답은 <b>It is the most expensive bag of the five.</b> 👜<br>· expensive 는 3음절 긴 낱말 → <b>most expensive</b><br>· <b>expensivest</b> 는 없는 말이라 함정 조각이에요<br>· 다섯 개 '무리' 중 → <b>of</b> the five"}, {"tip": "카드 3 · C-3번 — '가장'이면 -er 이 아니라 -est", "lv": "다시 보기", "src": "1영역 · C-3번 다시 보기", "kor": "밑줄 친 부분을 바르게 고친 것을 고르세요.", "q": "The strings are <u>the larger</u> group in the orchestra.", "choices": ["the largest", "the larger", "the most large", "the most largest"], "answer": "the largest", "spk": false, "say": "The strings are the largest group in the orchestra.", "exp": "정답은 <b>the largest</b> 🎻 오케스트라 '안에서 가장' 큰 그룹<br>· <b>the larger</b> — 비교급(더 큰)이라 여럿 중 1등을 말할 수 없어요<br>· <b>the most large</b> — large 는 짧은 낱말 → -est<br>· <b>the most largest</b> — 이중 최상급 ❌"}, {"tip": "카드 3 · C-3번 — '가장'이면 -er 이 아니라 -est", "lv": "기초", "src": "1영역 · C-3번 유사 ①", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>대왕고래는 지구에서 가장 큰 동물이다. (large)</span>Blue whales are the <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> animals on Earth.", "choices": ["largest", "larger", "most large", "largeest"], "answer": "largest", "spk": false, "say": "Blue whales are the largest animals on Earth.", "exp": "정답은 <b>largest</b> 🐋 e 로 끝나는 낱말은 <b>-st</b> 만 붙여요<br>· <b>larger</b> — 비교급이에요<br>· <b>most large</b> — 짧은 낱말에 most ❌<br>· <b>largeest</b> — e 가 두 번 들어간 철자 실수"}, {"tip": "카드 3 · C-3번 — '가장'이면 -er 이 아니라 -est", "lv": "심화", "src": "1영역 · C-3번 유사 ②", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>서울은 한국에서 가장 큰 도시이다. (big)</span>Seoul is the <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> city in Korea.", "choices": ["biggest", "bigger", "bigest", "most big"], "answer": "biggest", "spk": false, "say": "Seoul is the biggest city in Korea.", "exp": "정답은 <b>biggest</b> 🏙️ big → 자음 g 를 한 번 더 + est<br>· <b>bigger</b> — 비교급(더 큰)<br>· <b>bigest</b> — g 를 한 번 더 써야 해요<br>· <b>most big</b> — 짧은 낱말은 -est"}, {"tip": "카드 4 · D-3번 — 주어진 낱말(pretty) 그대로 + of 끝까지", "lv": "다시 보기", "src": "1영역 · D-3번 다시 보기", "kor": "괄호 안의 단어를 활용하여 우리말과 일치하도록 빈칸에 알맞은 말을 고르세요.", "q": "<span class='kr'>장미가 모든 꽃 중에서 제일 예뻐. (pretty)</span>The rose is <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> all flowers.", "choices": ["the prettiest of", "the most beautiful", "the prettiest in", "the most pretty of"], "answer": "the prettiest of", "spk": false, "say": "The rose is the prettiest of all flowers.", "exp": "정답은 <b>the prettiest of</b> 🌹<br>· <b>the most beautiful</b> — 괄호 낱말 pretty 를 쓰지 않았고 of 도 빠졌어요 (지민이 답)<br>· <b>the prettiest in</b> — all flowers(여럿 무리) 앞은 of<br>· <b>the most pretty of</b> — pretty 는 -y 로 끝나는 2음절 → y 를 i 로 바꾸고 -est"}, {"tip": "카드 4 · D-3번 — 주어진 낱말(pretty) 그대로 + of 끝까지", "lv": "기초", "src": "1영역 · D-3번 유사 ①", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>그날은 내 인생에서 가장 행복한 날이었다. (happy)</span>That was <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> day of my life.", "choices": ["the happiest", "the most happy", "the happyest", "the happier"], "answer": "the happiest", "spk": false, "say": "That was the happiest day of my life.", "exp": "정답은 <b>the happiest</b> 😊 자음+y → y 를 i 로 + est<br>· <b>the most happy</b> — happy 는 -est 를 붙이는 낱말<br>· <b>the happyest</b> — y 를 i 로 바꾸지 않았어요<br>· <b>the happier</b> — 비교급이에요"}, {"tip": "카드 4 · D-3번 — 주어진 낱말(pretty) 그대로 + of 끝까지", "lv": "심화", "src": "1영역 · D-3번 유사 ② (영작)", "type": "ord", "kor": "우리말에 맞게 조각을 순서대로 눌러 문장을 만드세요. (필요 없는 조각이 하나 섞여 있어요)", "q": "이 고양이가 세 마리 중에서 가장 귀엽다. (cute)", "seq": ["This", "cat", "is", "the", "cutest", "of", "the", "three."], "extra": ["most"], "say": "This cat is the cutest of the three.", "exp": "정답은 <b>This cat is the cutest of the three.</b> 🐱<br>· cute → <b>cutest</b> (e 로 끝나니 -st 만)<br>· <b>most</b> 는 함정 조각 — most cutest 는 이중 최상급!<br>· 세 마리 '무리' 중 → <b>of</b> the three — 끝까지 챙기기"}];
+var S2 = [{"tip": "카드 5 · A-3번 — in + 장소·집단 / of + 여럿 무리", "lv": "다시 보기", "src": "2영역 · Let's Check It Out A-3번 다시 보기", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "Summer is the hottest <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> the four seasons.", "choices": ["of", "in", "at", "on"], "answer": "of", "spk": true, "say": "Summer is the hottest of the four seasons.", "exp": "정답은 <b>of</b> ☀️ the four seasons = 네 개의 <b>무리</b> → of<br>· <b>in</b> — 장소·집단(in my class) 앞에 써요 (지민이 답)<br>· <b>at / on</b> — 최상급 뒤 범위를 나타내지 않아요"}, {"tip": "카드 5 · A-3번 — in + 장소·집단 / of + 여럿 무리", "lv": "기초", "src": "2영역 · A-3번 유사 ①", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "Minsu is the tallest boy <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> my class.", "choices": ["in", "of", "at", "to"], "answer": "in", "spk": true, "say": "Minsu is the tallest boy in my class.", "exp": "정답은 <b>in</b> 🏫 my class 는 '반'이라는 <b>집단</b> 하나 → in<br>· <b>of</b> — 숫자·all·복수 무리 앞에 써요<br>· <b>at / to</b> — 최상급 범위로 쓰지 않아요"}, {"tip": "카드 5 · A-3번 — in + 장소·집단 / of + 여럿 무리", "lv": "심화", "src": "2영역 · A-3번 유사 ②", "kor": "다음 중 어법상 <b>알맞은</b> 문장을 고르세요.", "q": "the · 최상급 · in / of 를 한 번에 확인해요", "choices": ["Jiho is the smartest of all the students.", "Jiho is the smartest in all the students.", "Jiho is smartest of all the students.", "Jiho is the smarter of all the students."], "answer": "Jiho is the smartest of all the students.", "spk": false, "say": "Jiho is the smartest of all the students.", "exp": "정답은 <b>Jiho is the smartest of all the students.</b> 🎓<br>· <b>in all the students</b> — all + 복수 무리 앞은 of<br>· <b>smartest</b>(the 없음) — 최상급 앞 the 빠짐<br>· <b>the smarter of all</b> — of all 은 최상급과 짝꿍"}, {"tip": "카드 6 · B-5번 — late 의 두 가족: latest(시간) / last(순서)", "lv": "다시 보기", "src": "2영역 · Let's Check It Out B-5번 다시 보기", "kor": "괄호 안의 단어를 알맞은 형태로 바꾼 것을 고르세요.", "q": "Harris came in <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> of all the players. (late)", "choices": ["last", "latest", "late", "later"], "answer": "last", "spk": false, "say": "Harris came in last of all the players.", "exp": "정답은 <b>last</b> 🏃 '모든 선수 중 꼴찌로' = <b>순서</b>의 최상급<br>· <b>latest</b> — '최신의'(시간)라 순서에는 안 맞아요<br>· <b>late</b> — of all 이 있으니 최상급 자리 (지민이 답)<br>· <b>later</b> — 비교급(나중에)"}, {"tip": "카드 6 · B-5번 — late 의 두 가족: latest(시간) / last(순서)", "lv": "기초", "src": "2영역 · B-5번 유사 ①", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>너 그 최신 소식 들었니?</span>Have you heard the <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> news?", "choices": ["latest", "last", "latter", "later"], "answer": "latest", "spk": true, "say": "Have you heard the latest news?", "exp": "정답은 <b>latest</b> 📰 '최신의' = 시간의 최상급<br>· <b>last</b> — '마지막의'(순서)<br>· <b>latter</b> — '(둘 중) 후자의'<br>· <b>later</b> — '나중에'(비교급)"}, {"tip": "카드 6 · B-5번 — late 의 두 가족: latest(시간) / last(순서)", "lv": "심화", "src": "2영역 · B-5번 유사 ②", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>이번이 너의 마지막 기회야.</span>This is your <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> chance.", "choices": ["last", "latest", "later", "latter"], "answer": "last", "spk": true, "say": "This is your last chance.", "exp": "정답은 <b>last</b> ⏳ '마지막' = 순서의 끝<br>· <b>latest</b> — '최신의'라 기회에는 어색해요<br>· <b>later</b> — '나중에'<br>· <b>latter</b> — '후자의'(둘 중 뒤쪽)"}, {"tip": "카드 7 · Ready 3번 — one of the 최상급 + 복수명사(-s)", "lv": "다시 보기", "src": "2영역 · Ready for Exams(최상급) 3번 다시 보기 ①", "kor": "밑줄 친 부분을 바르게 고친 것을 고르세요.", "q": "The African grey parrot is <u>one of the smartest animal</u>.", "choices": ["one of the smartest animals", "one of the smarter animals", "one of smartest animal", "one of the most smartest animals"], "answer": "one of the smartest animals", "spk": false, "say": "The African grey parrot is one of the smartest animals.", "exp": "정답은 <b>one of the smartest animals</b> 🦜 '가장 똑똑한 동물들 <b>중 하나</b>' → 복수!<br>· <b>the smarter animals</b> — one of the 뒤는 최상급<br>· <b>one of smartest animal</b> — the 와 -s 가 둘 다 빠졌어요<br>· <b>the most smartest</b> — 이중 최상급 ❌"}, {"tip": "카드 7 · Ready 3번 — one of the 최상급 + 복수명사(-s)", "lv": "다시 보기", "src": "2영역 · Ready for Exams(최상급) 3번 다시 보기 ②", "kor": "밑줄 친 부분을 바르게 고친 것을 고르세요.", "q": "He was <u>the most quickest</u> of all the staff.", "choices": ["the quickest", "the most quickest", "the quicker", "most quick"], "answer": "the quickest", "spk": false, "say": "He was the quickest of all the staff.", "exp": "정답은 <b>the quickest</b> ⚡ quick 은 짧은 낱말 → -est 만!<br>· <b>the most quickest</b> — 이중 최상급 (카드 2 와 같은 실수)<br>· <b>the quicker</b> — 비교급이라 of all 과 안 맞아요<br>· <b>most quick</b> — the 도 없고, 짧은 낱말에 most ❌"}, {"tip": "카드 7 · Ready 3번 — one of the 최상급 + 복수명사(-s)", "lv": "기초", "src": "2영역 · 3번 유사 ①", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>부산은 한국에서 가장 큰 도시 중 하나이다.</span>Busan is one of the <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> in Korea.", "choices": ["biggest cities", "biggest city", "bigger cities", "most big cities"], "answer": "biggest cities", "spk": false, "say": "Busan is one of the biggest cities in Korea.", "exp": "정답은 <b>biggest cities</b> 🌆 one of the + 최상급 + <b>복수</b> (city → cities)<br>· <b>biggest city</b> — 단수라서 ❌<br>· <b>bigger cities</b> — 비교급이에요<br>· <b>most big cities</b> — big 은 -est"}, {"tip": "카드 7 · Ready 3번 — one of the 최상급 + 복수명사(-s)", "lv": "심화", "src": "2영역 · 3번 유사 ②", "kor": "다음 중 어법상 <b>어색한</b> 문장을 고르세요.", "q": "끝까지 하나씩 확인해요 (one of the + 복수)", "choices": ["Messi is one of the greatest player in the world.", "This is one of the oldest bridges in Paris.", "She is one of the kindest teachers in our school.", "It was the most exciting game of the year."], "answer": "Messi is one of the greatest player in the world.", "spk": false, "say": "", "exp": "어색한 문장은 <b>Messi is one of the greatest player in the world.</b> ⚽ → greatest <b>players</b> 로 고쳐요<br>· <b>one of the oldest bridges</b> — 복수 ⭕<br>· <b>one of the kindest teachers</b> — 복수 ⭕<br>· <b>the most exciting game of the year</b> — 긴 낱말 + most ⭕"}];
+var S3 = [{"tip": "카드 8 · Ready 3번 — 비교급 강조는 much (very ✗) — 두 번째 실수!", "lv": "다시 보기", "src": "3영역 · Ready for Exams(비교급) 3번 다시 보기", "kor": "어법상 어색한 것을 찾아 바르게 고친 것을 고르세요.", "q": "My little sister's desk is very cleaner than mine.", "choices": ["very → much", "cleaner → more clean", "mine → my", "sister's → sisters"], "answer": "very → much", "spk": false, "say": "My little sister's desk is much cleaner than mine.", "exp": "정답은 <b>very → much</b> 🧹 '훨씬 더 깨끗한' = much + 비교급<br>· <b>cleaner → more clean</b> — clean 은 1음절이라 cleaner 가 맞아요 (지민이 답)<br>· <b>mine → my</b> — than mine(내 것) 이 맞아요. my 뒤에는 명사가 와야 해요<br>· <b>sister's → sisters</b> — '여동생의 책상'이라 소유격 's 가 맞아요"}, {"tip": "카드 8 · Ready 3번 — 비교급 강조는 much (very ✗) — 두 번째 실수!", "lv": "기초", "src": "3영역 · 3번 유사 ①", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>이 상자는 저것보다 훨씬 더 무겁다.</span>This box is <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> heavier than that one.", "choices": ["much", "very", "more", "most"], "answer": "much", "spk": true, "say": "This box is much heavier than that one.", "exp": "정답은 <b>much</b> 📦 비교급(heavier) 강조 = '훨씬'<br>· <b>very</b> — 원급 전용 (very heavy ⭕)<br>· <b>more</b> — more heavier 는 비교급 겹치기 ❌<br>· <b>most</b> — 최상급이라 than 과 안 맞아요"}, {"tip": "카드 8 · Ready 3번 — 비교급 강조는 much (very ✗) — 두 번째 실수!", "lv": "심화", "src": "3영역 · 3번 유사 ②", "kor": "비교급을 강조하는 말로 쓸 수 <b>없는</b> 것을 고르세요.", "q": "( &nbsp;&nbsp;&nbsp;&nbsp; ) taller than his father", "choices": ["very", "much", "even", "far"], "answer": "very", "spk": true, "say": "", "exp": "정답은 <b>very</b> 🙅 very 는 원급만 꾸며요 (very tall ⭕ / very taller ❌)<br>· <b>much · even · far</b> 는 모두 비교급 앞에서 '훨씬'으로 쓸 수 있어요 (still · a lot 도 ⭕)"}, {"tip": "카드 8 · Ready 3번 — 비교급 강조는 much (very ✗) — 두 번째 실수!", "lv": "심화", "src": "3영역 · 3번 유사 ③ (영작)", "type": "ord", "kor": "우리말에 맞게 조각을 순서대로 눌러 문장을 만드세요. (필요 없는 조각이 하나 섞여 있어요)", "q": "오늘은 어제보다 훨씬 더 춥다.", "seq": ["It", "is", "much", "colder", "today", "than", "yesterday."], "extra": ["very"], "say": "It is much colder today than yesterday.", "exp": "정답은 <b>It is much colder today than yesterday.</b> 🥶<br>· 비교급 colder 앞 '훨씬' = <b>much</b><br>· <b>very</b> 는 함정 조각 (very colder ❌)"}, {"tip": "카드 9 · Ready 4번 — 조건 끝까지: 키는 tall ↔ short", "lv": "다시 보기", "src": "3영역 · Ready for Exams(비교급) 4번 다시 보기", "kor": "표를 보고 조건에 맞게 빈칸에 들어갈 말을 고르세요.", "q": "Ava is taller than Laura, but she is <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> Ted.", "choices": ["shorter than", "smaller than", "not as tall as", "taller than"], "answer": "shorter than", "spk": false, "say": "Ava is taller than Laura, but she is shorter than Ted.", "exp": "정답은 <b>shorter than</b> 📏 키는 tall ↔ <b>short</b><br>· <b>smaller than</b> — 크기(size)를 말할 때 써요. 조건 ② '키'에 맞지 않아요 (지민이 답)<br>· <b>not as tall as</b> — 뜻은 맞지만 조건 ③ '부정문 ❌'에 걸려요<br>· <b>taller than</b> — Ava(160) 는 Ted(175)보다 작아요", "psg": "<b>📏 그림 대신 키 표</b><table class='ctab'><tr><td>Ava</td><td><span class='cbar' style='width:64%'></span> 160cm</td></tr><tr><td>Laura</td><td><span class='cbar' style='width:56%'></span> 150cm</td></tr><tr><td>Ted</td><td><span class='cbar' style='width:76%'></span> 175cm</td></tr></table>조건 ① 비교 구문 사용 ② <b>키에 관한 것만</b> ③ 부정문 사용 ❌"}, {"tip": "카드 9 · Ready 4번 — 조건 끝까지: 키는 tall ↔ short", "lv": "기초", "src": "3영역 · 4번 유사 ①", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>미나(140cm)는 지수(150cm)보다 키가 작다.</span>Mina is <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> Jisu.", "choices": ["shorter than", "smaller than", "taller than", "shortest than"], "answer": "shorter than", "spk": false, "say": "Mina is shorter than Jisu.", "exp": "정답은 <b>shorter than</b> 👧 키가 작다 = short → shorter<br>· <b>smaller than</b> — 크기가 작다는 뜻, 키 표현으로는 shorter 가 정확해요<br>· <b>taller than</b> — 뜻이 반대예요<br>· <b>shortest than</b> — 최상급 + than 은 안 어울려요"}, {"tip": "카드 9 · Ready 4번 — 조건 끝까지: 키는 tall ↔ short", "lv": "심화", "src": "3영역 · 4번 유사 ② (영작)", "type": "ord", "kor": "우리말에 맞게 조각을 순서대로 눌러 문장을 만드세요. (필요 없는 조각이 하나 섞여 있어요)", "q": "내 남동생은 나보다 키가 훨씬 더 작다.", "seq": ["My", "brother", "is", "much", "shorter", "than", "me."], "extra": ["smaller"], "say": "My brother is much shorter than me.", "exp": "정답은 <b>My brother is much shorter than me.</b> 👦<br>· 키 → <b>short</b>er (smaller 는 크기라서 함정 조각)<br>· '훨씬' → <b>much</b> (카드 8 복습!)"}];
+var S4 = [{"tip": "카드 10 · 47번 — skyscraper 는 s 가 두 번", "lv": "다시 보기", "src": "4영역 · 단어 47번 다시 보기", "kor": "우리말 뜻에 알맞은 철자를 고르세요.", "q": "고층 건물", "choices": ["skyscraper", "skycraper", "skyscrapper", "skiscraper"], "answer": "skyscraper", "spk": false, "say": "skyscraper", "exp": "정답은 <b>skyscraper</b> 🏙️ = sky + <b>s</b>craper<br>· <b>skycraper</b> — 가운데 s 가 빠졌어요 (지민이 철자)<br>· <b>skyscrapper</b> — p 는 한 번만<br>· <b>skiscraper</b> — sky(하늘)의 y 를 i 로 바꾸면 안 돼요"}, {"tip": "카드 10 · 47번 — skyscraper 는 s 가 두 번", "lv": "기초", "src": "4영역 · 47번 유사 ①", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>그 고층 건물은 구름에 닿아 있다.</span>The <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span> touches the clouds.", "choices": ["skyscraper", "basement", "chimney", "hallway"], "answer": "skyscraper", "spk": true, "say": "The skyscraper touches the clouds.", "exp": "정답은 <b>skyscraper</b>(고층 건물) ☁️<br>· <b>basement</b> 지하실 · <b>chimney</b> 굴뚝 · <b>hallway</b> 복도 — 구름에 닿을 수 없어요"}, {"tip": "카드 10 · 47번 — skyscraper 는 s 가 두 번", "lv": "심화", "src": "4영역 · 47번 유사 ② (철자)", "kor": "우리말 뜻에 알맞은 철자를 고르세요.", "q": "천장", "choices": ["ceiling", "cieling", "seiling", "celing"], "answer": "ceiling", "spk": false, "say": "ceiling", "exp": "정답은 <b>ceiling</b> 💡 c-e-i 순서! ('c 뒤에는 ei')<br>· <b>cieling</b> — e 와 i 순서가 바뀌었어요<br>· <b>seiling</b> — 첫 글자는 s 가 아니라 c<br>· <b>celing</b> — i 가 빠졌어요"}, {"tip": "카드 11 · Day 36·37 — 헷갈리기 쉬운 짝꿍 미리 잡기", "lv": "기초", "src": "4영역 · 헷갈리는 짝 ① sensible / sensitive", "kor": "우리말 뜻에 알맞은 단어를 고르세요.", "q": "분별 있는, 현명한", "choices": ["sensible", "sensitive", "sincere", "stubborn"], "answer": "sensible", "spk": true, "say": "sensible", "exp": "정답은 <b>sensible</b> 🧠<br>· <b>sensitive</b> 세심한, 예민한<br>· <b>sincere</b> 진심 어린<br>· <b>stubborn</b> 고집 센"}, {"tip": "카드 11 · Day 36·37 — 헷갈리기 쉬운 짝꿍 미리 잡기", "lv": "심화", "src": "4영역 · 헷갈리는 짝 ② sensible / sensitive", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>내 피부는 아주 예민해서 햇볕에 빨갛게 된다.</span>My skin is very <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span>. It turns red in the sun.", "choices": ["sensitive", "sensible", "generous", "humble"], "answer": "sensitive", "spk": true, "say": "My skin is very sensitive. It turns red in the sun.", "exp": "정답은 <b>sensitive</b>(예민한) 🌞<br>· <b>sensible</b> — '현명한'이라 피부에는 어색해요<br>· <b>generous</b> 관대한 · <b>humble</b> 겸손한 — 사람 성격 낱말"}, {"tip": "카드 11 · Day 36·37 — 헷갈리기 쉬운 짝꿍 미리 잡기", "lv": "기초", "src": "4영역 · 헷갈리는 짝 ③ timid / coward", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>겁쟁이가 되지 말고 진실을 말해라.</span>Don't be a <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span>; tell the truth.", "choices": ["coward", "timid", "modest", "frank"], "answer": "coward", "spk": true, "say": "Don't be a coward; tell the truth.", "exp": "정답은 <b>coward</b>(겁쟁이, 명사) 🐔 a 뒤에 바로 오니까 명사!<br>· <b>timid</b> — '소심한'(형용사)이라 a 뒤에 혼자 못 와요 (a timid boy ⭕)<br>· <b>modest</b> 겸손한 · <b>frank</b> 솔직한"}, {"tip": "카드 11 · Day 36·37 — 헷갈리기 쉬운 짝꿍 미리 잡기", "lv": "심화", "src": "4영역 · 헷갈리는 짝 ④ optimistic / pessimistic", "kor": "빈칸에 들어갈 알맞은 말을 고르세요.", "q": "<span class='kr'>그녀는 늘 좋은 일이 생길 거라고 생각한다.</span>She is always <span class='blank'>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span>.", "choices": ["optimistic", "pessimistic", "arrogant", "cruel"], "answer": "optimistic", "spk": true, "say": "She is always optimistic.", "exp": "정답은 <b>optimistic</b>(낙관적인) 🌈<br>· <b>pessimistic</b> — 비관적인 (반대말)<br>· <b>arrogant</b> 오만한 · <b>cruel</b> 잔인한"}, {"tip": "카드 11 · Day 36·37 — 헷갈리기 쉬운 짝꿍 미리 잡기", "lv": "심화", "src": "4영역 · 헷갈리는 짝 ⑤ 반대말", "kor": "<b>humble</b>(겸손한)과 뜻이 <b>반대</b>인 단어를 고르세요.", "q": "humble ↔ ?", "choices": ["arrogant", "modest", "sincere", "diligent"], "answer": "arrogant", "spk": true, "say": "arrogant", "exp": "정답은 <b>arrogant</b>(오만한, 거만한) 😤<br>· <b>modest</b> — 겸손한 (humble 과 비슷한 말)<br>· <b>sincere</b> 진심 어린 · <b>diligent</b> 부지런한"}];
+var S5 = [{"tip": "카드 12 · 구문독해 p.44 1번 — 심경은 but 뒤에 숨어 있어요", "lv": "다시 보기", "src": "5영역 · 구문독해 p.44 1번 다시 보기", "kor": "글에 드러난 'I'의 심경으로 가장 알맞은 것을 고르세요.", "q": "글쓴이(I)의 마음은?", "choices": ["지겹고 짜증스럽다", "부럽고 샘이 난다", "걱정되고 불안하다", "신나고 기쁘다"], "answer": "지겹고 짜증스럽다", "spk": false, "say": "", "exp": "정답은 <b>지겹고 짜증스럽다</b> 😩 단서는 <b>but</b> 뒤 — <b>I'm tired of hearing about him</b>(그 얘기 듣는 게 지겹다), I just want some quiet time!<br>· <b>부럽고 샘이 난다</b> — 언니를 부러워하는 말은 없어요<br>· <b>걱정되고 불안하다</b> — 언니를 걱정하는 내용이 아니에요<br>· <b>신나고 기쁘다</b> — I'm happy for her 는 but 앞의 말이에요. 진짜 마음은 but 뒤!", "psg": "<b>📖 Read</b>My older sister got her first boyfriend last month. She talks about him from morning till night. She tells me what he ate, what he wore, and what he said. I'm happy for her, <u>but I'm tired of hearing about him all day.</u> I just want some quiet time!"}, {"tip": "카드 12 · 구문독해 p.44 1번 — 심경은 but 뒤에 숨어 있어요", "lv": "기초", "src": "5영역 · p.44 1번 유사 ① (핵심 표현)", "kor": "밑줄 친 부분의 뜻으로 가장 알맞은 것을 고르세요.", "q": "I'm <u>tired of</u> eating pizza every day.", "choices": ["~에 질렸다", "~해서 몸이 피곤하다", "~을 정말 좋아한다", "~을 기대하고 있다"], "answer": "~에 질렸다", "spk": false, "say": "I'm tired of eating pizza every day.", "exp": "정답은 <b>~에 질렸다</b> 🍕 be tired <b>of</b> = ~에 질리다, 지겹다<br>· <b>몸이 피곤하다</b> — 그냥 I'm tired. 일 때의 뜻이에요. of 가 붙으면 '질리다'!<br>· <b>정말 좋아한다</b> — love / be fond of<br>· <b>기대하고 있다</b> — look forward to"}, {"tip": "카드 12 · 구문독해 p.44 1번 — 심경은 but 뒤에 숨어 있어요", "lv": "기초", "src": "5영역 · p.44 1번 유사 ②", "kor": "글에 드러난 'I'의 심경으로 가장 알맞은 것을 고르세요.", "q": "글쓴이(I)의 마음은?", "choices": ["짜증 난", "자랑스러운", "무서운", "외로운"], "answer": "짜증 난", "spk": false, "say": "", "exp": "정답은 <b>짜증 난</b> 🥁 단서는 <b>but I'm sick of the noise</b>(소음에 질렸다) + 숙제에 집중할 수 없다<br>· <b>자랑스러운</b> — 동생을 칭찬하는 말은 없어요<br>· <b>무서운</b> — 겁나는 상황이 아니에요<br>· <b>외로운</b> — 혼자라서 쓸쓸한 내용이 없어요", "psg": "<b>📖 Read</b>My brother got a new drum set for his birthday. He plays it every evening, even when I'm studying. I know he wants to be a good drummer, <u>but I'm sick of the noise.</u> I can't focus on my homework at all."}, {"tip": "카드 12 · 구문독해 p.44 1번 — 심경은 but 뒤에 숨어 있어요", "lv": "심화", "src": "5영역 · p.44 1번 유사 ③ (심경 변화)", "kor": "글에 드러난 'I'의 심경 <b>변화</b>로 가장 알맞은 것을 고르세요.", "q": "처음 마음 → 나중 마음", "choices": ["긴장한 → 뿌듯한", "뿌듯한 → 긴장한", "신난 → 지루한", "슬픈 → 화난"], "answer": "긴장한 → 뿌듯한", "spk": false, "say": "", "exp": "정답은 <b>긴장한 → 뿌듯한</b> 🎤 앞: hands were shaking, afraid(긴장) → <b>But</b> 뒤: clapped, best speech, couldn't stop smiling(뿌듯)<br>· <b>뿌듯한 → 긴장한</b> — 순서가 반대예요<br>· <b>신난 → 지루한</b> — 지루하다는 단서가 없어요<br>· <b>슬픈 → 화난</b> — 화난 표현이 없어요<br>※ 여기서도 <b>But</b> 이 마음이 바뀌는 신호였어요!", "psg": "<b>📖 Read</b>Before the speech contest, my hands were shaking and my mouth was dry. I was afraid I would forget my words. But when I finished, everyone stood up and clapped for a long time. My teacher said it was the best speech of the day. I couldn't stop smiling."}];
+var ALL = [].concat(S1, S2, S3, S4, S5);
+
+
+
+/* ══════ 결과 기록 (영핏 공통 · 조용히 전송) ══════ */
+var ENGFIT_SUBMIT_URL = "https://script.google.com/macros/s/AKfycbz5IC3cEtaBGW10qZhrjwtjdtGugmcmYb4ZTHS4k-1LOqTRYzW-LfoAPyFB_ShjAqNp/exec";
+async function engfitSubmit(r) {
+  var body = JSON.stringify(r);
+  try {
+    var res = await fetch(ENGFIT_SUBMIT_URL, { method: "POST", body: body });
+    var j = await res.json();
+    return j.ok === true;
+  } catch (e) {
+    try {
+      await fetch(ENGFIT_SUBMIT_URL, { method: "POST", mode: "no-cors", body: body });
+      return true;
+    } catch (e2) { return false; }
+  }
+}
+
+/* ══════ 낱말 배열 문항 준비 (필요 없는 조각 포함) ══════ */
+ALL.forEach(function (q) {
+  if (q.type === "ord") { q.words = q.seq.concat(q.extra || []); q.answer = q.seq.join(" "); }
+});
+
+
+var SECTIONS = [
+  { name: "1영역 · 최상급 모양 (the · most/-est)", start: 0, end: 15 },
+  { name: "2영역 · 최상급 범위·순서 (in/of · last · one of)", start: 15, end: 25 },
+  { name: "3영역 · 비교급 강조·조건 영작", start: 25, end: 32 },
+  { name: "4영역 · 단어 Day 36·37", start: 32, end: 40 },
+  { name: "5영역 · 구문독해 심경 (p.44)", start: 40, end: 44 }
+];
+var CARD_AT = {}; SECTIONS.forEach(function (sec) { var seen = []; for (var i = sec.start; i < sec.end; i++) { if (seen.indexOf(ALL[i].tip) === -1) seen.push(ALL[i].tip); } CARD_AT[sec.start] = seen; });
+var NSEC = SECTIONS.length;
+function secIndex(i) {
+  for (var s = 0; s < NSEC; s++) { if (i < SECTIONS[s].end) return s; }
+  return NSEC - 1;
+}
+
+/* ══════ 정답 위치 균등 분산 셔플 (영역별 따로 + 같은 위치 3연속 금지) ══════ */
+function shuffleArr(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+function hasTriple(arr) {
+  for (var i = 2; i < arr.length; i++) { if (arr[i] === arr[i - 1] && arr[i] === arr[i - 2]) return true; }
+  return false;
+}
+function balancedAssign(n, k) {
+  var pool, tries = 0;
+  do {
+    pool = [];
+    var base = Math.floor(n / k);
+    for (var p = 0; p < k; p++) { for (var c = 0; c < base; c++) pool.push(p); }
+    var remainder = n - pool.length;
+    var all = []; for (var z = 0; z < k; z++) all.push(z);
+    shuffleArr(all).slice(0, remainder).forEach(function (p) { pool.push(p); });
+    pool = shuffleArr(pool);
+    tries++;
+  } while (hasTriple(pool) && tries < 300);
+  return pool;
+}
+(function prepareShuffledChoices() {
+  SECTIONS.forEach(function (sec) {
+    [4, 5].forEach(function (k) {
+      var mcqIdx = [];
+      for (var idx = sec.start; idx < sec.end; idx++) {
+        var qq = ALL[idx];
+        if (qq.type === "ord") continue;
+        if (qq.fix) { qq.shuffled = qq.choices.slice(); continue; }
+        if (qq.choices.length === k) mcqIdx.push(idx);
+      }
+      var targetPositions = balancedAssign(mcqIdx.length, k);
+      mcqIdx.forEach(function (idx, mi) {
+        var q = ALL[idx];
+        var shuffled = shuffleArr(q.choices);
+        var curPos = shuffled.indexOf(q.answer);
+        var target = targetPositions[mi];
+        var tmp = shuffled[target]; shuffled[target] = shuffled[curPos]; shuffled[curPos] = tmp;
+        q.shuffled = shuffled;
+      });
+    });
+  });
+})();
+
+/* ══════ 진행 상태 ══════ */
+var studentName = "";
+var current = 0;
+var answersLog = new Array(ALL.length).fill(null);
+var elapsed = new Array(NSEC).fill(0);
+var sent = new Array(NSEC).fill(false);
+var lastTick = 0;
+var curSec = 0;
+var cardsShown = {};
+var pendingCard = 0;
+var pendingIdx = 0;
+
+/* ══════ 진행 자동 저장 ══════ */
+var SAVE_KEY = "clinic-hjm-1014";
+function saveState() {
+  try {
+    localStorage.setItem(SAVE_KEY, JSON.stringify({
+      v: 1, name: studentName, current: current, log: answersLog, elapsed: elapsed, sent: sent,
+      cards: cardsShown,
+      choices: ALL.map(function (q) { return q.shuffled || null; })
+    }));
+  } catch (e) {}
+}
+function loadState() {
+  try {
+    var s = JSON.parse(localStorage.getItem(SAVE_KEY));
+    return (s && s.v === 1 && s.name && s.log) ? s : null;
+  } catch (e) { return null; }
+}
+function clearState() { try { localStorage.removeItem(SAVE_KEY); } catch (e) {} }
+
+/* 화면 전환 — 다른 화면으로 바뀔 때(또는 새 카드)만 맨 위로. 문항끼리 넘어갈 때는 끌어올리지 않음 */
+function show(id) {
+  var target = document.getElementById(id);
+  var changed = target.classList.contains("hidden");
+  ["start-card", "resume-card", "cards-card", "quiz-card", "sec-result-card"].forEach(function (c) {
+    document.getElementById(c).classList.toggle("hidden", c !== id);
+  });
+  if (id === "start-card") refreshSectionButtons();
+  if (changed || id === "cards-card") window.scrollTo(0, 0);
+}
+
+/* ══════ 영역 완료 여부 ══════ */
+function secDone(si) {
+  var s = SECTIONS[si];
+  for (var i = s.start; i < s.end; i++) { if (!answersLog[i]) return false; }
+  return true;
+}
+function firstUndoneSec() {
+  for (var i = 0; i < NSEC; i++) { if (!secDone(i)) return i; }
+  return -1;
+}
+function refreshSectionButtons() {
+  var doneList = [];
+  for (var si = 0; si < NSEC; si++) {
+    var btn = document.getElementById("start-s" + (si + 1));
+    if (!btn) continue;
+    var done = secDone(si);
+    btn.classList.toggle("done", done);
+    if (done) doneList.push(si + 1);
+  }
+  var note = document.getElementById("sec-done-note");
+  if (note) {
+    note.textContent = doneList.length
+      ? "✓ " + doneList.join("영역, ") + "영역은 이미 다 풀었어요 (다시 눌러 복습할 수 있어요)"
+      : "";
+  }
+}
+
+/* ══════ 카드 → 문제 순서로 진행 ══════ */
+function step() {
+  curSec = secIndex(current);
+  if (CARD_AT[current] && !cardsShown[current]) { showCardScreen(current, 0); }
+  else { show("quiz-card"); showQuestion(); }
+}
+function showCardScreen(i, k) {
+  pendingCard = i;
+  pendingIdx = k;
+  var sec = SECTIONS[curSec];
+  var list = CARD_AT[i];
+  var title = list[k];
+  document.getElementById("card-num").textContent = "개념 카드 · " + (k + 1) + " / " + list.length;
+  document.getElementById("card-sec").textContent = sec.name;
+  document.getElementById("card-bar").style.width = ((k + 1) / list.length * 100) + "%";
+  document.getElementById("cardbox").innerHTML = "<h2>" + title + "</h2>" + (TIPS[title] || "");
+  document.getElementById("card-next").textContent = (k + 1 < list.length)
+    ? "다음 카드 보기 (" + (k + 2) + " / " + list.length + ") →"
+    : "확인 끝! 문제 " + (function () { var n = 0; for (var j = i; j < sec.end; j++) { if (j > i && CARD_AT[j]) break; n++; } return n; })() + "개 풀러 가기 →";
+  show("cards-card");
+}
+document.getElementById("card-next").addEventListener("click", function () {
+  var list = CARD_AT[pendingCard];
+  if (list && pendingIdx + 1 < list.length) { showCardScreen(pendingCard, pendingIdx + 1); return; }
+  cardsShown[pendingCard] = true;
+  saveState();
+  show("quiz-card");
+  showQuestion();
+});
+document.getElementById("card-skip").addEventListener("click", function () {
+  cardsShown[pendingCard] = true;
+  saveState();
+  show("quiz-card");
+  showQuestion();
+});
+
+/* ══════ 시작 (영역 선택) / 이어하기 ══════ */
+var nameInput = document.getElementById("name-input");
+var secBtns = [].slice.call(document.querySelectorAll(".sec-start"));
+function syncNameGate() {
+  var ok = nameInput.value.trim().length > 0;
+  secBtns.forEach(function (b) { b.disabled = !ok; });
+}
+nameInput.addEventListener("input", syncNameGate);
+nameInput.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" && nameInput.value.trim()) secBtns[0].click();
+});
+
+function startSection(si) {
+  var typed = nameInput.value.trim();
+  if (!typed) { nameInput.focus(); return; }
+  studentName = typed;
+  var s = SECTIONS[si];
+  for (var i = s.start; i < s.end; i++) { answersLog[i] = null; }
+  elapsed[si] = 0;
+  sent[si] = false;
+  Object.keys(CARD_AT).forEach(function (k) {
+    if (+k >= s.start && +k < s.end) delete cardsShown[k];
+  });
+  current = s.start;
+  curSec = si;
+  lastTick = Date.now();
+  saveState();
+  step();
+}
+secBtns.forEach(function (b) {
+  b.addEventListener("click", function () { startSection(parseInt(b.getAttribute("data-sec"), 10)); });
+});
+
+var savedState = loadState();
+function applySaved(s) {
+  studentName = s.name;
+  current = s.current;
+  answersLog = (s.log || []).slice(0, ALL.length);
+  while (answersLog.length < ALL.length) answersLog.push(null);
+  elapsed = s.elapsed || [];
+  while (elapsed.length < NSEC) elapsed.push(0);
+  sent = s.sent || [];
+  while (sent.length < NSEC) sent.push(false);
+  cardsShown = s.cards || {};
+  if (s.choices) {
+    ALL.forEach(function (q, i) { if (s.choices[i] && q.type !== "ord" && s.choices[i].length === q.choices.length) q.shuffled = s.choices[i]; });
+  }
+}
+if (savedState && savedState.log && savedState.log.some(function (l) { return !!l; })) {
+  var doneCnt = savedState.log.filter(function (l) { return !!l; }).length;
+  document.getElementById("resume-info").textContent =
+    savedState.name + " · " + doneCnt + "문제까지 푼 기록이 있어요. 이어서 풀까요?";
+  show("resume-card");
+} else {
+  syncNameGate();
+}
+document.getElementById("resume-btn").addEventListener("click", function () {
+  applySaved(savedState);
+  nameInput.value = studentName;
+  syncNameGate();
+  lastTick = Date.now();
+  if (current >= ALL.length) current = ALL.length;
+  var prevSec = current > 0 ? secIndex(current - 1) : -1;
+  if (prevSec >= 0 && current === SECTIONS[prevSec].end && secDone(prevSec)) {
+    showSectionResult(prevSec);
+  } else {
+    curSec = secIndex(current);
+    step();
+  }
+});
+document.getElementById("restart-btn").addEventListener("click", function () {
+  clearState();
+  answersLog = new Array(ALL.length).fill(null);
+  elapsed = new Array(NSEC).fill(0); sent = new Array(NSEC).fill(false); cardsShown = {}; current = 0;
+  nameInput.value = "";
+  syncNameGate();
+  show("start-card");
+});
+document.getElementById("pick-sec-btn").addEventListener("click", function () {
+  stopSpeak();
+  nameInput.value = studentName;
+  syncNameGate();
+  show("start-card");
+});
+
+
+/* ══════ 문제 표시 ══════ */
+var CIRCLED = ["①", "②", "③", "④", "⑤"];
+var ordPicked = [];
+var ordWarned = false;
+function lvClass(lv) { return lv === "심화" ? " hi" : ((lv === "개념" || lv === "다시 보기") ? " cp" : (lv === "영작" ? " wr" : "")); }
+function showQuestion() {
+  var q = ALL[current];
+  var si = secIndex(current);
+  curSec = si;
+  var sec = SECTIONS[si];
+  document.getElementById("prog-num").textContent =
+    sec.name.split(" · ")[0] + "  ·  " + (current - sec.start + 1) + " / " + (sec.end - sec.start);
+  document.getElementById("prog-pct").textContent = "전체 " + Math.round(current / ALL.length * 100) + "%";
+  document.getElementById("bar-fill").style.width = ((current - sec.start) / (sec.end - sec.start) * 100) + "%";
+  document.getElementById("srctag").innerHTML = "<span class='lv" + lvClass(q.lv) + "'>" + q.lv + "</span>" + q.src;
+  document.getElementById("tipinner").innerHTML = "<b>" + q.tip + "</b><br>" + (TIPS[q.tip] || "");
+  document.getElementById("tipbox").open = false;
+  var psgEl = document.getElementById("psg");
+  psgEl.innerHTML = q.psg || "";
+  psgEl.classList.toggle("hidden", !q.psg);
+  document.getElementById("qtext").innerHTML = "<span class='kor'>Q" + (current + 1) + ". " + q.kor + "</span>" + q.q;
+
+  var sayBtn = document.getElementById("say-btn");
+  var canSayQ = !!(speechOK && q.sayQ);
+  sayBtn.classList.toggle("hidden", !canSayQ);
+  sayBtn.onclick = canSayQ ? function () { speak(q.sayQ); } : null;
+
+  var box = document.getElementById("choices");
+  var ordArea = document.getElementById("ord-area");
+  var keyhint = document.getElementById("keyhint");
+  var warn = document.getElementById("ord-warn");
+  box.innerHTML = "";
+  warn.classList.add("hidden");
+  ordWarned = false;
+
+  if (q.type === "ord") {
+    box.classList.add("hidden");
+    ordArea.classList.remove("hidden");
+    keyhint.textContent = "조각을 순서대로 눌러 문장을 만든 뒤 [다 만들었어요]를 누르세요 · 필요 없는 조각은 그대로 남겨 두세요";
+    ordPicked = [];
+    renderOrd(q);
+  } else {
+    box.classList.remove("hidden");
+    ordArea.classList.add("hidden");
+    keyhint.textContent = "숫자키 1~" + q.shuffled.length + "로도 선택할 수 있어요";
+    q.shuffled.forEach(function (c, i) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "choice";
+      b.setAttribute("data-choice", c);
+      b.innerHTML = q.fix ? '<span class="num">' + c + "</span>" : '<span class="num">' + CIRCLED[i] + "</span>" + c;
+      b.addEventListener("click", function () { pick(c); });
+      if (speechOK && q.spk) {
+        var sp = document.createElement("span");
+        sp.className = "say";
+        sp.textContent = "🔊";
+        sp.title = "발음 듣기";
+        sp.addEventListener("click", function (ev) { ev.stopPropagation(); ev.preventDefault(); speak(c); });
+        b.appendChild(sp);
+      }
+      box.appendChild(b);
+    });
+  }
+  lastTick = Date.now();
+  var qc = document.getElementById("quiz-card");
+  var topY = qc.getBoundingClientRect().top + (window.pageYOffset || 0) - 12;
+  if ((window.pageYOffset || 0) > topY) window.scrollTo(0, topY < 0 ? 0 : topY);
+}
+
+/* ══════ 낱말 배열 (필요 없는 조각 섞기) ══════ */
+function renderOrd(q) {
+  if (!q.tileOrder) {
+    var idxs = q.words.map(function (w, i) { return i; });
+    do { q.tileOrder = shuffleArr(idxs); } while (q.words.length > 2 && q.tileOrder.slice(0, q.seq.length).join() === idxs.slice(0, q.seq.length).join());
+  }
+  var slot = document.getElementById("ord-slot");
+  var tiles = document.getElementById("ord-tiles");
+  slot.innerHTML = "";
+  tiles.innerHTML = "";
+  if (ordPicked.length === 0) {
+    var ph = document.createElement("span");
+    ph.className = "ph";
+    ph.textContent = "여기에 문장이 만들어져요";
+    slot.appendChild(ph);
+  }
+  ordPicked.forEach(function (wi) {
+    var t = document.createElement("span");
+    t.className = "tile";
+    t.textContent = q.words[wi];
+    slot.appendChild(t);
+  });
+  q.tileOrder.forEach(function (wi) {
+    var used = ordPicked.indexOf(wi) >= 0;
+    var t = document.createElement("button");
+    t.type = "button";
+    t.className = "tile" + (used ? " used" : "");
+    t.textContent = q.words[wi];
+    if (!used) {
+      t.addEventListener("click", function () {
+        ordPicked.push(wi);
+        document.getElementById("ord-warn").classList.add("hidden");
+        ordWarned = false;
+        renderOrd(q);
+      });
+    }
+    tiles.appendChild(t);
+  });
+}
+document.getElementById("ord-undo").addEventListener("click", function () {
+  var q = ALL[current];
+  if (!q || q.type !== "ord") return;
+  ordPicked.pop();
+  document.getElementById("ord-warn").classList.add("hidden");
+  ordWarned = false;
+  renderOrd(q);
+});
+document.getElementById("ord-check").addEventListener("click", function () {
+  var q = ALL[current];
+  if (!q || q.type !== "ord") return;
+  var warn = document.getElementById("ord-warn");
+  if (ordPicked.length === 0) {
+    warn.textContent = "※ 먼저 조각을 눌러서 문장을 만들어 주세요!";
+    warn.classList.remove("hidden");
+    return;
+  }
+  if (ordPicked.length < q.seq.length && !ordWarned) {
+    ordWarned = true;
+    warn.textContent = "※ 문장이 아직 덜 만들어진 것 같아요. 문장 끝에 빠뜨린 조각이 없는지 확인해 보세요. (그래도 제출하려면 한 번 더 누르세요)";
+    warn.classList.remove("hidden");
+    return;
+  }
+  var made = ordPicked.map(function (wi) { return q.words[wi]; }).join(" ");
+  pick(made);
+});
+
+document.addEventListener("keydown", function (e) {
+  if (document.getElementById("quiz-card").classList.contains("hidden")) return;
+  var q = ALL[current];
+  if (!q || q.type === "ord" || !q.shuffled) return;
+  var n = parseInt(e.key, 10);
+  if (n >= 1 && n <= q.shuffled.length) pick(q.shuffled[n - 1]);
+});
+
+/* ══════ 소리 — 선택 효과음 없음 · 영역 완료 팡파르만 · 원어민 발음 ══════ */
+var SOUND_KEY = "engfit-sound";
+var soundOn = true;
+try { soundOn = localStorage.getItem(SOUND_KEY) !== "off"; } catch (e) {}
+var audioCtx = null;
+function ac() {
+  try {
+    if (!audioCtx) {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return null;
+      audioCtx = new AC();
+    }
+    if (audioCtx.state === "suspended") { audioCtx.resume(); }
+    return audioCtx;
+  } catch (e) { return null; }
+}
+function tone(freq, startAt, dur, vol) {
+  var c = ac(); if (!c) return;
+  try {
+    var o = c.createOscillator(), g = c.createGain();
+    o.type = "sine"; o.frequency.value = freq;
+    var t0 = c.currentTime + startAt;
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(vol, t0 + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    o.connect(g); g.connect(c.destination);
+    o.start(t0); o.stop(t0 + dur + 0.06);
+  } catch (e) {}
+}
+function playFinish() {
+  if (!soundOn) return;
+  [523.25, 659.25, 783.99, 1046.5].forEach(function (f, i) { tone(f, i * 0.11, 0.34, 0.19); });
+}
+function paintSoundBtn() {
+  var b = document.getElementById("sound-toggle");
+  if (b) { b.textContent = soundOn ? "🔊 소리 켜짐" : "🔇 소리 꺼짐"; b.className = soundOn ? "" : "off"; }
+}
+document.getElementById("sound-toggle").addEventListener("click", function () {
+  soundOn = !soundOn;
+  try { localStorage.setItem(SOUND_KEY, soundOn ? "on" : "off"); } catch (e) {}
+  paintSoundBtn();
+  if (soundOn) { pickVoice(); speak("Hello", 0.9); } else { stopSpeak(); }
+});
+paintSoundBtn();
+
+/* 원어민 발음 (미국 여성 목소리 고정) — 목소리 목록이 오기 전에는 절대 읽지 않음 */
+var speechOK = (typeof window.speechSynthesis !== "undefined" && typeof window.SpeechSynthesisUtterance !== "undefined");
+var enVoice = null, pendingSay = null;
+var FEMALE_US = ["google us english", "zira", "aria", "jenny", "michelle", "ava", "samantha", "allison", "susan", "joanna", "salli", "kimberly", "nanci", "emma", "eva", "female"];
+var MALE_ANY = ["david", "mark", "guy", "alex", "fred", "eric", "christopher", "roger", "steffan", "tony", "brandon", "daniel", "james", "male"];
+function isMaleName(n) { n = (n || "").toLowerCase(); if (n.indexOf("female") !== -1) return false; for (var i = 0; i < MALE_ANY.length; i++) { if (n.indexOf(MALE_ANY[i]) !== -1) return true; } return false; }
+function femaleRank(n) { n = (n || "").toLowerCase(); for (var i = 0; i < FEMALE_US.length; i++) { if (n.indexOf(FEMALE_US[i]) !== -1) return i; } return 999; }
+function pickVoice() {
+  if (!speechOK) return;
+  try {
+    var vs = window.speechSynthesis.getVoices() || [], us = [], en = [];
+    for (var i = 0; i < vs.length; i++) {
+      var lg = (vs[i].lang || "").replace("_", "-");
+      if (/^en-US/i.test(lg)) us.push(vs[i]); else if (/^en/i.test(lg)) en.push(vs[i]);
+    }
+    function best(list) {
+      var pool = list.filter(function (v) { return !isMaleName(v.name); });
+      if (!pool.length) return null;
+      pool = pool.slice().sort(function (a, b) { return femaleRank(a.name) - femaleRank(b.name); });
+      return pool[0];
+    }
+    enVoice = best(us) || best(en) || null;
+  } catch (e) { enVoice = null; }
+}
+function onVoicesReady() { pickVoice(); if (enVoice && pendingSay) { var t = pendingSay; pendingSay = null; speak(t); } }
+if (speechOK) {
+  pickVoice();
+  try { window.speechSynthesis.onvoiceschanged = onVoicesReady; } catch (e) {}
+  var voiceTries = 0;
+  var voiceTimer = setInterval(function () {
+    voiceTries++;
+    if (!enVoice) onVoicesReady();
+    if (enVoice || voiceTries > 60) clearInterval(voiceTimer);
+  }, 250);
+} else {
+  document.body.className += " nospeech";
+}
+function speak(text, rate) {
+  if (!soundOn || !speechOK) return;
+  var t = String(text == null ? "" : text).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  if (!t) return;
+  try {
+    if (!enVoice) pickVoice();
+    if (!enVoice || !/^en/i.test((enVoice.lang || "").replace("_", "-"))) { pendingSay = t; return; }
+    window.speechSynthesis.cancel();
+    var u = new window.SpeechSynthesisUtterance(t);
+    u.lang = "en-US";
+    u.voice = enVoice;
+    u.rate = rate || 0.85;
+    u.pitch = 1;
+    window.speechSynthesis.speak(u);
+  } catch (e) {}
+}
+function stopSpeak() { pendingSay = null; try { if (speechOK) window.speechSynthesis.cancel(); } catch (e) {} }
+/* 개념 카드 낱말 칩 · 해설의 [정답 문장 듣기] */
+document.addEventListener("click", function (e) {
+  var el = e.target;
+  while (el && el !== document.body) {
+    if (el.classList && (el.classList.contains("wordchip") || el.classList.contains("pline") || el.classList.contains("listen"))) {
+      speak(el.getAttribute("data-say"));
+      return;
+    }
+    el = el.parentNode;
+  }
+});
+
+/* ══════ 답 고르기 → 정답 영어 읽어 주기 → 0.25초 뒤 다음 문항 ══════ */
+function plain(s) { return String(s == null ? "" : s).replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim(); }
+var locked = false;
+function pick(choice) {
+  if (locked) return; locked = true;
+  var q = ALL[current];
+  var si = secIndex(current);
+  var ok = (choice === q.answer);
+  if (q.say) speak(q.say);
+  answersLog[current] = { no: current + 1, ok: ok, chosen: plain(choice) || "(빈칸)", answer: plain(q.answer) };
+  elapsed[si] += Math.min(180, Math.round((Date.now() - lastTick) / 1000));
+  current++;
+  saveState();
+  setTimeout(function () {
+    locked = false;
+    if (current === SECTIONS[si].end) {
+      showSectionResult(si);
+      setTimeout(function () { try { playFinish(); } catch (e) {} }, 180);
+    } else step();
+  }, 250);
+}
+
+
+/* ══════ 영역 결과 ══════ */
+function secStats(si) {
+  var sec = SECTIONS[si];
+  var slice = answersLog.slice(sec.start, sec.end).filter(function (l) { return !!l; });
+  var score = slice.filter(function (l) { return l.ok; }).length;
+  var wrong = slice.filter(function (l) { return !l.ok; }).map(function (l) { return l.no; });
+  return { slice: slice, score: score, total: sec.end - sec.start, wrong: wrong };
+}
+function sectionMsg(si) {
+  var st = secStats(si);
+  return "[영핏 지민 오답클리닉 " + (si + 1) + "/" + NSEC + " 결과]\n학생: " + studentName +
+         "\n영역: " + SECTIONS[si].name +
+         "\n점수: " + st.score + "/" + st.total +
+         "\n풀이 시간: " + Math.max(1, Math.round(elapsed[si] / 60)) + "분" +
+         "\n틀린 문항: " + (st.wrong.length ? st.wrong.join(", ") : "없음 👏") +
+         "\n- 영핏 지나티처";
+}
+function totalMsg() {
+  var parts = SECTIONS.map(function (s, si) {
+    var st = secStats(si);
+    return (si + 1) + "영역 " + st.score + "/" + st.total;
+  });
+  var done = answersLog.filter(function (l) { return !!l; });
+  var totalScore = done.filter(function (l) { return l.ok; }).length;
+  var allWrong = done.filter(function (l) { return !l.ok; }).map(function (l) { return l.no; });
+  return "[영핏 지민 오답클리닉 최종 결과]\n학생: " + studentName +
+         "\n퀴즈: 한지민 10/14 실력향상 클리닉 (" + ALL.length + "문항)" +
+         "\n" + parts.join(" / ") +
+         "\n총점: " + totalScore + "/" + ALL.length +
+         "\n틀린 문항: " + (allWrong.length ? allWrong.join(", ") : "없음 👏") +
+         "\n- 영핏 지나티처";
+}
+function copyText(btn, text, doneLabel) {
+  function fallback() {
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.top = "-1000px";
+      document.body.appendChild(ta); ta.select();
+      var ok = document.execCommand && document.execCommand("copy");
+      document.body.removeChild(ta);
+      if (ok) { btn.textContent = doneLabel; return; }
+    } catch (e) {}
+    prompt("아래 내용을 길게 눌러 복사하세요", text);
+  }
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { btn.textContent = doneLabel; }).catch(fallback);
+    } else { fallback(); }
+  } catch (e) { fallback(); }
+}
+
+function showSectionResult(si) {
+  var st = secStats(si);
+  var allDone = firstUndoneSec() === -1;
+  document.getElementById("sec-result-title").textContent =
+    allDone ? "모든 영역 완료! 정말 수고했어요 🎉" : (si + 1) + "영역 완료! 잘했어요 👏";
+  document.getElementById("sec-score").textContent = st.score + " / " + st.total;
+  document.getElementById("sec-wrong").textContent =
+    st.wrong.length ? "다시 볼 문항: " + st.wrong.join(", ") + "번 — 아래 해설을 꼭 읽어 봐요!" : "이 영역 전부 정답! 최고예요! 🏆";
+
+  var copyBtn = document.getElementById("sec-copy-btn");
+  copyBtn.textContent = (si + 1) + "영역 결과 복사 (카톡용)";
+  copyBtn.onclick = function () { copyText(copyBtn, sectionMsg(si), "복사 완료! 카톡에 붙여넣기 하세요 ✓"); };
+
+  var nextBtn = document.getElementById("next-sec-btn");
+  var nextSi = firstUndoneSec();
+  if (allDone) {
+    nextBtn.classList.add("hidden");
+    var totalScore = answersLog.filter(function (l) { return l && l.ok; }).length;
+    document.getElementById("total-block").classList.remove("hidden");
+    document.getElementById("total-score").textContent = totalScore + " / " + ALL.length;
+    document.getElementById("total-detail").textContent =
+      SECTIONS.map(function (s, idx) { var t = secStats(idx); return (idx + 1) + "영역 " + t.score + "/" + t.total; }).join("  ·  ");
+    var totalBtn = document.getElementById("total-copy-btn");
+    totalBtn.textContent = "전체 결과 복사 (카톡용)";
+    totalBtn.onclick = function () { copyText(totalBtn, totalMsg(), "복사 완료! 카톡에 붙여넣기 하세요 ✓"); };
+  } else {
+    nextBtn.classList.remove("hidden");
+    document.getElementById("total-block").classList.add("hidden");
+    nextBtn.textContent = "쉬었다가 " + (nextSi + 1) + "영역 풀러 가기 →";
+    nextBtn.onclick = function () {
+      stopSpeak();
+      current = SECTIONS[nextSi].start; curSec = nextSi; lastTick = Date.now();
+      var s = SECTIONS[nextSi];
+      for (var i = s.start; i < s.end; i++) { answersLog[i] = null; }
+      elapsed[nextSi] = 0; sent[nextSi] = false;
+      saveState(); step();
+    };
+  }
+
+  var expBox = document.getElementById("sec-explanations");
+  expBox.innerHTML = "";
+  st.slice.forEach(function (log) {
+    var q = ALL[log.no - 1];
+    var d = document.createElement("div");
+    d.className = "exp" + (log.ok ? "" : " wrong");
+    var ansLine = log.ok ? "" : '<span class="ans-line">내가 고른 답: ' + plain(log.chosen) + " → 정답: " + plain(q.answer) + "</span>";
+    d.innerHTML = '<div class="exp-head"><b>Q' + log.no + " " +
+      (log.ok ? "정답! ✓" : "다시 보기 ✎") + "</b> <span style='color:#6B7B7E;font-size:0.82rem'>" + plain(q.src) + "</span></div>" + ansLine + q.exp;
+    if (q.say && speechOK) {
+      var lb = document.createElement("button");
+      lb.type = "button";
+      lb.className = "listen";
+      lb.setAttribute("data-say", q.say);
+      lb.textContent = "🔊 정답 문장 듣고 따라 읽기";
+      d.appendChild(document.createElement("br"));
+      d.appendChild(lb);
+    }
+    expBox.appendChild(d);
+  });
+
+  if (!sent[si]) {
+    sent[si] = true;
+    saveState();
+    engfitSubmit({
+      quizId: "clinic-hjm-1014-p" + (si + 1),
+      quizTitle: "한지민 실력향상클리닉 1014 비교급·최상급·단어·심경 " + (si + 1) + "영역",
+      student: studentName,
+      score: st.score,
+      total: st.total,
+      wrong: st.wrong,
+      durationSec: elapsed[si],
+      detail: st.slice
+    });
+  }
+  show("sec-result-card");
+}
+
+</script>
+</body>
+</html>
